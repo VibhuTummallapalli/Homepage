@@ -6,19 +6,35 @@
     <title>Vibhu Tummallapalli - Personal Homepage</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ECU Brand Typefaces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', 'Garamond', serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', 'Avenir Next', sans-serif;
+        }
+        .serif-heading {
+            font-family: 'Roboto Slab', 'Museo Slab', serif;
+        }
+    </style>
 </head>
 <body class="gradient-bg min-h-screen">
     
     <!-- Header Section -->
-    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+    <header class="text-white shadow-lg" style="background: linear-gradient(to right, #592A8A, #7B3FA8);">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Vibhu Tummallapalli</h1>
                 <ul class="flex flex-wrap justify-center gap-4 md:gap-6">
-                    <li><a href="#about" class="hover:text-indigo-200 transition-colors duration-300">About</a></li>
-                    <li><a href="#projects" class="hover:text-indigo-200 transition-colors duration-300">Projects</a></li>
-                    <li><a href="#skills" class="hover:text-indigo-200 transition-colors duration-300">Skills</a></li>
-                    <li><a href="#contact" class="hover:text-indigo-200 transition-colors duration-300">Contact</a></li>
+                    <li><a href="#about" class="hover:text-yellow-300 transition-colors duration-300">About</a></li>
+                    <li><a href="#experience" class="hover:text-yellow-300 transition-colors duration-300">Experience</a></li>
+                    <li><a href="#projects" class="hover:text-yellow-300 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#skills" class="hover:text-yellow-300 transition-colors duration-300">Skills</a></li>
+                    <li><a href="#contact" class="hover:text-yellow-300 transition-colors duration-300">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -33,26 +49,111 @@
                 <div class="flex flex-col md:flex-row items-center">
                     <!-- Profile Image -->
                     <div class="md:w-1/3 w-full p-8">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" 
+                        <img src="./images/profile.jpg" 
                              alt="Profile picture of Vibhu Tummallapalli" 
-                             class="rounded-full w-64 h-64 mx-auto object-cover border-8 border-indigo-100 shadow-lg">
+                             class="rounded-lg w-64 h-80 mx-auto object-contain shadow-lg bg-white" style="border: 8px solid #592A8A;">
                     </div>
                     
                     <!-- Bio Content -->
                     <div class="md:w-2/3 w-full p-8">
                         <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome! 👋</h2>
                         <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            Hi, I'm <span class="text-indigo-600 font-semibold">Vibhu Tummallapalli</span>, a passionate web developer 
-                            and computer science student. I love creating beautiful, functional, and user-friendly websites.
+                            Hi, I'm <span class="font-semibold" style="color: #592A8A;">Vibhu Tummallapalli</span>, a software engineer with a strong foundation in full-stack development. I'm currently pursuing a B.S. in Software Engineering at East Carolina University, with hands-on experience building production-ready tools in both academic and applied settings.
                         </p>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            Currently, I'm exploring modern web technologies like React, Tailwind CSS, and Node.js. 
-                            I believe in writing clean code and building experiences that make a difference.
-                        </p>
-                        <p class="text-lg text-gray-600 leading-relaxed">
-                            When I'm not coding, you can find me reading tech blogs, exploring new frameworks, 
-                            or working on personal projects that challenge my skills.
-                        </p>
+                        <div class="p-4 rounded-lg" style="background-color: #f3e8ff;">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-graduation-cap mr-2" style="color: #592A8A;"></i>Education</h3>
+                            <p class="text-gray-700"><strong>Bachelor of Science in Software Engineering</strong></p>
+                            <p class="font-semibold" style="color: #592A8A;">Concentration: Data Science</p>
+                            <p class="text-gray-600">East Carolina University, Greenville, NC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Work Experience</h2>
+            <div class="space-y-6">
+                <!-- Research Assistant -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8">
+                    <div class="flex items-start gap-6">
+                        <!-- Company Logo -->
+                        <div class="flex-shrink-0">
+                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-16 h-16 object-contain">
+                        </div>
+                        
+                        <!-- Experience Details -->
+                        <div class="flex-grow">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800">Undergraduate Research Assistant</h3>
+                                    <p class="text-lg font-semibold" style="color: #592A8A;">ECU College of Engineering and Technology</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3 text-gray-700">
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Collaborate with faculty and research teams to support the development and testing of experimental software tools in health tech and cybersecurity domains, ensuring that 100% of features function correctly.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Conduct literature reviews and technical analyses by evaluating design patterns and performance metrics to assist in architectural software design decisions and ensure alignment with research goals.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Design, develop, and evaluate prototypes using modern programming languages and frameworks such as Python, C#, and Java, which results in external datasets being output in a clean and readable fashion thus turning them into actionable insights.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Manage project milestones and code repositories using Git which resulted in reproducibility and the team obtaining 100% of the project tasks on time and in full.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Maintain and configure research environments, including local LLM integrations and dependency management using tools like Maven and Python virtual environments.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Assistant -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8">
+                    <div class="flex items-start gap-6">
+                        <!-- Company Logo -->
+                        <div class="flex-shrink-0">
+                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-16 h-16 object-contain">
+                        </div>
+                        
+                        <!-- Experience Details -->
+                        <div class="flex-grow">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800">Learning Assistant</h3>
+                                    <p class="text-lg font-semibold" style="color: #592A8A;">East Carolina University</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3 text-gray-700">
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Tutor 50+ students in subjects including Algebra, Calculus, and Statistics by coming up with educational strategies resulting in 75% of students obtaining 4.0 GPA in that course.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Work with struggling students to improve academic performance through weekly review sessions, resulting in raising test scores from failing to 80%+.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Provide both personal and group support during office hours, clarifying test results and reinforcing coursework, resulting in improved student comprehension and confidence.</span>
+                                </p>
+                                <p class="flex items-start">
+                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
+                                    <span>Assist professors during class by taking attendance, answering phone calls, managing classroom materials, and helping set up equipment for demonstrations which allowed for successful class sessions.</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,38 +162,40 @@
         <!-- Skills Section -->
         <section id="skills" class="mb-16">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Technical Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-html5 text-5xl text-orange-600 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">HTML5</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-css3-alt text-5xl text-blue-600 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">CSS3</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-js text-5xl text-yellow-500 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">JavaScript</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-react text-5xl text-cyan-500 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">React</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-node text-5xl text-green-600 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">Node.js</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-git-alt text-5xl text-red-600 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">Git</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fas fa-database text-5xl text-blue-800 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">SQL</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                    <i class="fab fa-python text-5xl text-blue-500 mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">Python</h3>
+            
+            <!-- Programming Languages -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Programming Languages</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Python -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="./images/python-logo.webp" alt="Python" class="w-16 h-16 object-contain mb-2 mx-auto">
+                        <h4 class="font-semibold text-gray-800 text-sm">Python</h4>
+                    </div>
+                    
+                    <!-- Java -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="./images/java-logo.webp" alt="Java" class="w-16 h-16 object-contain mb-2 mx-auto">
+                        <h4 class="font-semibold text-gray-800 text-sm">Java</h4>
+                    </div>
+                    
+                    <!-- C# -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="./images/csharp-logo.webp" alt="C#" class="w-16 h-16 object-contain mb-2 mx-auto">
+                        <h4 class="font-semibold text-gray-800 text-sm">C#</h4>
+                    </div>
+                    
+                    <!-- JavaScript -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="./images/javascript-logo.webp" alt="JavaScript" class="w-16 h-16 object-contain mb-2 mx-auto">
+                        <h4 class="font-semibold text-gray-800 text-sm">JavaScript</h4>
+                    </div>
+                    
+                    <!-- SQL -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="./images/sql-logo.webp" alt="SQL" class="w-16 h-16 object-contain mb-2 mx-auto">
+                        <h4 class="font-semibold text-gray-800 text-sm">SQL</h4>
+                    </div>
                 </div>
             </div>
         </section>
@@ -101,38 +204,52 @@
         <section id="projects" class="mb-16">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
+                <!-- Dental Charting Tool -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=300&fit=crop" 
-                         alt="Web development project" 
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=300&fit=crop" 
+                         alt="Dental Charting Tool" 
                          class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">E-Commerce Platform</h3>
-                        <p class="text-gray-600 mb-4">
-                            A full-stack e-commerce application built with React, Node.js, and MongoDB. 
-                            Features include user authentication, product management, and payment integration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">MongoDB</span>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-gray-800">Dental Charting Tool</h3>
+                            <span class="text-sm text-gray-600 whitespace-nowrap">Jun - Jul 2025</span>
+                        </div>
+                        <p class="font-semibold mb-3" style="color: #592A8A;">ECU College of Engineering and Technology</p>
+                        <div class="space-y-2 text-gray-600 text-sm mb-4">
+                            <p>• Developed a desktop application using WPF (.NET) and C# to assist dentists in charting and managing patient treatments across multiple visits.</p>
+                            <p>• Designed and implemented an interactive tooth chart UI that allows users to select individual teeth and apply color coded procedures.</p>
+                            <p>• Integrated a local large language model (LLM) using Ollama and HttpClient to power an AI chat assistant capable of answering treatment-related questions in real time.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">C#</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">WPF</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">.NET</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">Ollama</span>
                         </div>
                     </div>
                 </div>
                 
+                <!-- AR Glasses Video Streamer -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=300&fit=crop" 
-                         alt="Mobile app development" 
+                    <img src="https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=600&h=300&fit=crop" 
+                         alt="AR Glasses Video Streamer" 
                          class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Task Management App</h3>
-                        <p class="text-gray-600 mb-4">
-                            A responsive task management application with drag-and-drop functionality, 
-                            real-time updates, and team collaboration features.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Tailwind</span>
-                            <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm">Firebase</span>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-gray-800">AR Glasses Video Streamer</h3>
+                            <span class="text-sm text-gray-600 whitespace-nowrap">Jul - Aug 2025</span>
+                        </div>
+                        <p class="font-semibold mb-3" style="color: #592A8A;">ECU College of Engineering and Technology</p>
+                        <div class="space-y-2 text-gray-600 text-sm mb-4">
+                            <p>• Created a Java-based application for Vuzix AR glasses that enables silent, real-time video streaming from elderly users to remote nursing home staff.</p>
+                            <p>• Utilized the Camera2 API and MediaCodec for efficient video capture, encoding, and transmission with minimal system overhead.</p>
+                            <p>• Engineered a background service that automatically launches at startup and streams video without requiring user interaction, ensuring ease of use for elderly individuals.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">Java</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">Android</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">Camera2 API</span>
+                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">MediaCodec</span>
                         </div>
                     </div>
                 </div>
@@ -168,11 +285,19 @@
                     </a>
                     
                     <!-- Email -->
-                    <a href="mailto:vibhu@example.com" 
+                    <a href="mailto:vibhu.tummallapalli@gmail.com" 
                        class="flex flex-col items-center p-6 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-300 group">
                         <i class="fas fa-envelope text-5xl text-red-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
                         <h3 class="font-semibold text-gray-800">Email</h3>
-                        <p class="text-sm text-gray-600">vibhu@example.com</p>
+                        <p class="text-sm text-gray-600">vibhu.tummallapalli@gmail.com</p>
+                    </a>
+                    
+                    <!-- Phone -->
+                    <a href="tel:+19199099573" 
+                       class="flex flex-col items-center p-6 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300 group">
+                        <i class="fas fa-phone text-5xl text-green-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h3 class="font-semibold text-gray-800">Phone</h3>
+                        <p class="text-sm text-gray-600">919-909-9573</p>
                     </a>
                     
                     <!-- Portfolio -->
@@ -195,6 +320,26 @@
             <p class="text-gray-400">Built with HTML, CSS, and Tailwind CSS</p>
         </div>
     </footer>
+
+    <script>
+        function toggleExperience(button) {
+            const content = button.previousElementSibling.querySelector('.extra-content');
+            const text = button.querySelector('.read-more-text');
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                text.textContent = 'Read less';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                text.textContent = 'Read more';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
 
 </body>
 </html>
