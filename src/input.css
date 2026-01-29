@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer components {
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100;
+  }
+}

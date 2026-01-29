@@ -1,0 +1,16 @@
+{
+  "name": "personal-homepage",
+  "version": "1.0.0",
+  "description": "Personal homepage with Tailwind CSS",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "keywords": ["personal", "homepage", "tailwind"],
+  "author": "Vibhu Tummallapalli",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

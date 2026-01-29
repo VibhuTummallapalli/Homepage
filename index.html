@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibhu Tummallapalli - Personal Homepage</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="gradient-bg min-h-screen">
+    
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Vibhu Tummallapalli</h1>
+                <ul class="flex flex-wrap justify-center gap-4 md:gap-6">
+                    <li><a href="#about" class="hover:text-indigo-200 transition-colors duration-300">About</a></li>
+                    <li><a href="#projects" class="hover:text-indigo-200 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#skills" class="hover:text-indigo-200 transition-colors duration-300">Skills</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-200 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Hero Section with Image and Short Bio -->
+        <section id="about" class="mb-16">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Profile Image -->
+                    <div class="md:w-1/3 w-full p-8">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" 
+                             alt="Profile picture of Vibhu Tummallapalli" 
+                             class="rounded-full w-64 h-64 mx-auto object-cover border-8 border-indigo-100 shadow-lg">
+                    </div>
+                    
+                    <!-- Bio Content -->
+                    <div class="md:w-2/3 w-full p-8">
+                        <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome! 👋</h2>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                            Hi, I'm <span class="text-indigo-600 font-semibold">Vibhu Tummallapalli</span>, a passionate web developer 
+                            and computer science student. I love creating beautiful, functional, and user-friendly websites.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                            Currently, I'm exploring modern web technologies like React, Tailwind CSS, and Node.js. 
+                            I believe in writing clean code and building experiences that make a difference.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            When I'm not coding, you can find me reading tech blogs, exploring new frameworks, 
+                            or working on personal projects that challenge my skills.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-html5 text-5xl text-orange-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">HTML5</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-css3-alt text-5xl text-blue-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">CSS3</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-js text-5xl text-yellow-500 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">JavaScript</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-react text-5xl text-cyan-500 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">React</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-node text-5xl text-green-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Node.js</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-git-alt text-5xl text-red-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Git</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fas fa-database text-5xl text-blue-800 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">SQL</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                    <i class="fab fa-python text-5xl text-blue-500 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Python</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=300&fit=crop" 
+                         alt="Web development project" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            A full-stack e-commerce application built with React, Node.js, and MongoDB. 
+                            Features include user authentication, product management, and payment integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=300&fit=crop" 
+                         alt="Mobile app development" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Task Management App</h3>
+                        <p class="text-gray-600 mb-4">
+                            A responsive task management application with drag-and-drop functionality, 
+                            real-time updates, and team collaboration features.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Tailwind</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links/Contact Section -->
+        <section id="contact" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Let's Connect</h2>
+            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+                <p class="text-center text-lg text-gray-600 mb-8">
+                    I'm always open to new opportunities and collaborations. Feel free to reach out!
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- GitHub -->
+                    <a href="https://github.com/vibhutummallapalli" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="flex flex-col items-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300 group">
+                        <i class="fab fa-github text-5xl text-gray-800 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h3 class="font-semibold text-gray-800">GitHub</h3>
+                        <p class="text-sm text-gray-600">@vibhutummallapalli</p>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/vibhutummallapalli" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="flex flex-col items-center p-6 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 group">
+                        <i class="fab fa-linkedin text-5xl text-blue-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h3 class="font-semibold text-gray-800">LinkedIn</h3>
+                        <p class="text-sm text-gray-600">Connect with me</p>
+                    </a>
+                    
+                    <!-- Email -->
+                    <a href="mailto:vibhu@example.com" 
+                       class="flex flex-col items-center p-6 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-300 group">
+                        <i class="fas fa-envelope text-5xl text-red-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h3 class="font-semibold text-gray-800">Email</h3>
+                        <p class="text-sm text-gray-600">vibhu@example.com</p>
+                    </a>
+                    
+                    <!-- Portfolio -->
+                    <a href="#" 
+                       class="flex flex-col items-center p-6 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300 group">
+                        <i class="fas fa-globe text-5xl text-purple-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h3 class="font-semibold text-gray-800">Portfolio</h3>
+                        <p class="text-sm text-gray-600">View my work</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-2">© 2026 Vibhu Tummallapalli. All rights reserved.</p>
+            <p class="text-gray-400">Built with HTML, CSS, and Tailwind CSS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
