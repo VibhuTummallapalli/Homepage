@@ -7,7 +7,6 @@ const base = import.meta.env.BASE_URL;
 const asset = (p: string) =>
   `${base.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
 
-// Concise project summaries (independent of CV bullet copy)
 const projectMeta: Record<string, { summary: string; role: string }> = {
   'NC Early Mathematics Placement Testing': {
     role: 'Senior Capstone · 5-person Agile team',
@@ -26,7 +25,6 @@ const projectMeta: Record<string, { summary: string; role: string }> = {
   },
 };
 
-// Compact experience summaries
 const experienceMeta: Record<string, string> = {
   'Undergraduate Research Assistant':
     'Built data ingestion prototypes in Python, C#, and Java across three faculty research projects in health tech and cybersecurity. Maintained Python/Maven environments and local LLM integrations supporting team-wide reproducibility.',
@@ -46,11 +44,11 @@ const yearRange = (s: string) =>
   <main class="container-prose">
 
     <!-- Hero -->
-    <section class="pt-20 md:pt-32 pb-16 md:pb-24">
+    <section class="pt-20 md:pt-32 pb-16 md:pb-24" data-reveal>
       <div class="flex flex-col-reverse md:flex-row md:items-start md:justify-between gap-10">
         <div class="flex-1">
           <p class="eyebrow mb-6">Software engineer · Charlotte, NC</p>
-          <h1 class="font-serif text-stone-900 text-5xl md:text-7xl leading-[1.02] tracking-tight mb-8">
+          <h1 class="font-serif text-navy-900 text-5xl md:text-7xl leading-[1.02] tracking-tight mb-8">
             Hi, I'm Vibhu.
           </h1>
           <p class="text-xl md:text-2xl text-stone-700 leading-snug font-light mb-10 max-w-xl">
@@ -68,7 +66,7 @@ const yearRange = (s: string) =>
           <img
             src={asset('images/profile.jpg')}
             alt={`Portrait of ${profile.name}`}
-            class="w-64 md:w-80 h-auto rounded-2xl ring-1 ring-stone-200"
+            class="w-64 md:w-80 h-auto rounded-2xl ring-1 ring-navy-200"
             loading="eager"
           />
         </div>
@@ -76,14 +74,14 @@ const yearRange = (s: string) =>
     </section>
 
     <!-- Currently -->
-    <section class="pb-4">
+    <section class="pb-4" data-reveal>
       <div class="grid md:grid-cols-[auto_1fr] md:gap-12 gap-3">
         <p class="eyebrow md:pt-1">Currently</p>
         <p class="text-lg text-stone-700 leading-relaxed">
-          Finishing my B.S. in <span class="text-stone-900">Software Engineering</span> at
-          East Carolina University. Starting an M.S. in <span class="text-stone-900">Cybersecurity</span>
+          Finishing my B.S. in <span class="text-navy-800 font-medium">Software Engineering</span> at
+          East Carolina University. Starting an M.S. in <span class="text-navy-800 font-medium">Cybersecurity</span>
           at UNC Charlotte this fall. Looking for
-          <span class="text-stone-900">full-time, part-time, and internship</span> roles
+          <span class="text-navy-800 font-medium">full-time, part-time, and internship</span> roles
           in the greater Charlotte area.
         </p>
       </div>
@@ -93,7 +91,7 @@ const yearRange = (s: string) =>
 
     <!-- Selected work -->
     <section id="work">
-      <div class="flex items-baseline justify-between mb-12">
+      <div class="flex items-baseline justify-between mb-12" data-reveal>
         <h2 class="eyebrow">Selected work</h2>
         <span class="text-xs text-stone-400">2025 — 2026</span>
       </div>
@@ -103,14 +101,14 @@ const yearRange = (s: string) =>
           projects.map((p, i) => {
             const meta = projectMeta[p.name];
             return (
-              <li>
+              <li data-reveal>
                 <div class="flex items-start gap-5 md:gap-8">
-                  <span class="font-serif text-3xl md:text-4xl text-stone-300 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
+                  <span class="font-serif text-3xl md:text-4xl text-navy-400 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div class="flex-1 min-w-0">
                     <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
-                      <h3 class="text-xl md:text-2xl font-semibold text-stone-900 tracking-tight">
+                      <h3 class="text-xl md:text-2xl font-semibold text-navy-900 tracking-tight">
                         {p.name}
                       </h3>
                       <span class="text-xs text-stone-400 whitespace-nowrap tabular-nums">
@@ -118,7 +116,7 @@ const yearRange = (s: string) =>
                       </span>
                     </div>
                     {meta && (
-                      <p class="text-sm text-stone-500 mb-4">{meta.role}</p>
+                      <p class="text-sm text-navy-600 mb-4">{meta.role}</p>
                     )}
                     <p class="text-base text-stone-700 leading-relaxed mb-5 max-w-2xl">
                       {meta?.summary ?? p.bullets[0]}
@@ -127,7 +125,7 @@ const yearRange = (s: string) =>
                       {
                         p.tags.map((t, idx) => (
                           <>
-                            {idx > 0 && <span class="text-stone-300">·</span>}
+                            {idx > 0 && <span class="text-navy-200">·</span>}
                             <span class="tag">{t}</span>
                           </>
                         ))
@@ -146,16 +144,16 @@ const yearRange = (s: string) =>
 
     <!-- Experience -->
     <section id="experience">
-      <h2 class="eyebrow mb-12">Experience</h2>
+      <h2 class="eyebrow mb-12" data-reveal>Experience</h2>
       <ol class="space-y-12">
         {
           experience.map((e) => (
-            <li class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10">
-              <p class="text-sm text-stone-400 tabular-nums tracking-wide whitespace-nowrap md:pt-1">
+            <li class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10" data-reveal>
+              <p class="text-sm text-navy-500 tabular-nums tracking-wide whitespace-nowrap md:pt-1">
                 {yearRange(e.dates)}
               </p>
               <div>
-                <h3 class="text-lg font-semibold text-stone-900 tracking-tight">
+                <h3 class="text-lg font-semibold text-navy-900 tracking-tight">
                   {e.role}
                 </h3>
                 <p class="text-sm text-stone-500 mb-3">{e.org}</p>
@@ -173,19 +171,19 @@ const yearRange = (s: string) =>
 
     <!-- Stack -->
     <section id="stack">
-      <h2 class="eyebrow mb-12">Stack</h2>
+      <h2 class="eyebrow mb-12" data-reveal>Stack</h2>
       <dl class="space-y-7">
         {
           skillGroups.map((group) => (
-            <div class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 items-baseline">
-              <dt class="text-sm text-stone-500 whitespace-nowrap">
+            <div class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 items-baseline" data-reveal>
+              <dt class="text-sm text-navy-600 whitespace-nowrap font-medium">
                 {group.title}
               </dt>
               <dd class="flex flex-wrap gap-x-3 gap-y-1.5">
                 {
                   group.items.map((item, idx) => (
                     <>
-                      {idx > 0 && <span class="text-stone-300">·</span>}
+                      {idx > 0 && <span class="text-navy-200">·</span>}
                       <span class="text-base text-stone-800">{item}</span>
                     </>
                   ))
@@ -197,37 +195,53 @@ const yearRange = (s: string) =>
       </dl>
     </section>
 
-    <div class="rule"></div>
-
-    <!-- Contact -->
-    <section id="contact" class="pb-12">
-      <h2 class="eyebrow mb-6">Get in touch</h2>
-      <p class="font-serif text-3xl md:text-5xl text-stone-900 leading-tight tracking-tight mb-8 max-w-2xl">
-        Open to new grad roles, internships, and research collaborations.
-      </p>
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <a href={`mailto:${profile.email}`} class="arrow-link text-base">
-          {profile.email}
-        </a>
-        <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link text-base">
-          GitHub
-        </a>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link text-base">
-          LinkedIn
-        </a>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="container-prose pb-16 pt-8">
-    <div class="border-t border-stone-200 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-      <p class="text-xs text-stone-500">
-        © {new Date().getFullYear()} {profile.name}
-      </p>
-      <p class="text-xs text-stone-400">
-        Built with Astro & Tailwind. Hosted on GitHub Pages.
-      </p>
+  <!-- Contact — full-bleed navy section -->
+  <section
+    id="contact"
+    class="bg-navy-900 text-stone-100 mt-24 md:mt-32 relative overflow-hidden"
+  >
+    <!-- subtle radial highlight -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 pointer-events-none opacity-40"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(135,156,192,0.18), transparent 60%);"
+    ></div>
+
+    <div class="container-prose py-24 md:py-32 relative">
+      <div data-reveal>
+        <p class="eyebrow-inverse mb-6">Get in touch</p>
+        <h2 class="font-serif text-4xl md:text-6xl text-white leading-tight tracking-tight mb-8 max-w-2xl">
+          Open to new grad roles, internships, and research collaborations.
+        </h2>
+        <p class="text-lg text-navy-100/80 mb-10 max-w-xl leading-relaxed">
+          Based in Charlotte, NC. The best way to reach me is email — I usually
+          reply within a day.
+        </p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a href={`mailto:${profile.email}`} class="arrow-link-inverse">
+            {profile.email}
+          </a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
+            GitHub
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </div>
-  </footer>
+
+    <div class="border-t border-navy-700">
+      <div class="container-prose py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <p class="text-xs text-navy-300">
+          © {new Date().getFullYear()} {profile.name}
+        </p>
+        <p class="text-xs text-navy-300">
+          Built with Astro & Tailwind. Hosted on GitHub Pages.
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>

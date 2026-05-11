@@ -11,7 +11,7 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    @apply bg-stone-900 text-stone-50;
+    @apply bg-navy-700 text-stone-50;
   }
 }
 
@@ -21,7 +21,12 @@
   }
 
   .eyebrow {
-    @apply text-xs font-medium text-stone-500 uppercase tracking-[0.18em];
+    @apply text-xs font-medium uppercase tracking-[0.18em];
+    color: theme('colors.navy.600');
+  }
+
+  .eyebrow-inverse {
+    @apply text-xs font-medium uppercase tracking-[0.18em] text-navy-200;
   }
 
   .tag {
@@ -29,21 +34,55 @@
   }
 
   .link {
-    @apply text-stone-900 underline decoration-stone-300 decoration-1 underline-offset-4 hover:decoration-stone-900 transition-colors;
+    @apply text-navy-700 underline decoration-navy-200 decoration-1 underline-offset-4 hover:decoration-navy-700 transition-colors;
   }
 
   .arrow-link {
-    @apply inline-flex items-center gap-1.5 text-sm font-medium text-stone-700 hover:text-stone-900 transition-colors;
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-navy-700 hover:text-navy-900 transition-colors;
   }
   .arrow-link::after {
     content: '↗';
-    @apply text-stone-400 text-xs transition-transform;
+    @apply text-navy-300 text-xs transition-transform;
   }
   .arrow-link:hover::after {
-    @apply -translate-y-px translate-x-px text-stone-900;
+    @apply -translate-y-px translate-x-px text-navy-700;
+  }
+
+  .arrow-link-inverse {
+    @apply inline-flex items-center gap-1.5 text-base font-medium text-navy-100 hover:text-white transition-colors;
+  }
+  .arrow-link-inverse::after {
+    content: '↗';
+    @apply text-navy-300 text-xs transition-transform;
+  }
+  .arrow-link-inverse:hover::after {
+    @apply -translate-y-px translate-x-px text-white;
   }
 
   .rule {
-    @apply h-px bg-stone-200 my-20 md:my-28;
+    @apply h-px my-20 md:my-28;
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme('colors.navy.100'),
+      transparent
+    );
+  }
+}
+
+/* Scroll-reveal animations. JS toggles `.is-revealed` once the element
+   crosses the viewport. We only opt elements into the hidden initial
+   state when motion is allowed and JS has hydrated the page. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal].is-armed {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-armed.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
