@@ -1,283 +1,231 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
-import Section from '../components/Section.astro';
-import {
-  profile,
-  education,
-  experience,
-  projects,
-  skillGroups,
-} from '../data/site';
+import { profile, experience, projects, skillGroups } from '../data/site';
 
 const base = import.meta.env.BASE_URL;
 const asset = (p: string) =>
   `${base.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
 
-const featuredProject = projects.find((p) => p.featured);
-const otherProjects = projects.filter((p) => !p.featured);
+// Concise project summaries (independent of CV bullet copy)
+const projectMeta: Record<string, { summary: string; role: string }> = {
+  'NC Early Mathematics Placement Testing': {
+    role: 'Senior Capstone · 5-person Agile team',
+    summary:
+      'Full-stack web platform used by 60 NC high schools and 5,000+ students. Built role-based access with JWT + 2FA, real-time proctor monitoring via SignalR, and an async email pipeline on GCP Pub/Sub. Shipped through GitHub Actions CI/CD.',
+  },
+  'Metamorphic Testing of Multi-Agent AI Systems': {
+    role: 'Research',
+    summary:
+      'A novel catalog of 9 metamorphic relations for testing multi-agent LLM systems where traditional oracles fail — interchangeability, redundancy invariance, graceful degradation. Reusable Python framework with semantic verifiers; CrewAI harnesses across OpenAI and Ollama via LangChain.',
+  },
+  'Dental Charting Tool': {
+    role: 'Applied research · ECU School of Dental Medicine',
+    summary:
+      'WPF/.NET desktop app for radiograph analysis with GPT-4o Vision, FDI tooth-numbering, CDT-coded procedure cataloging, and urgency triage. 5-step prompt pipeline for clinically contextualized output. Presented at ECU RCAW and CORAS 2026.',
+  },
+};
+
+// Compact experience summaries
+const experienceMeta: Record<string, string> = {
+  'Undergraduate Research Assistant':
+    'Built data ingestion prototypes in Python, C#, and Java across three faculty research projects in health tech and cybersecurity. Maintained Python/Maven environments and local LLM integrations supporting team-wide reproducibility.',
+  'Learning Assistant':
+    'Tutored 50+ students in Algebra, Calculus, and Statistics through weekly review sessions and office hours — raising failing test scores to 80%+ and helping 75% of students earn a 4.0 in the course.',
+};
+
+const yearRange = (s: string) =>
+  s.replace(/\s*\(Expected\)/, '').replace(/–/g, '—');
 ---
 
 <Layout>
   <Nav />
 
-  <main class="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+  <span id="top"></span>
+
+  <main class="container-prose">
 
     <!-- Hero -->
-    <section id="about" class="mb-24">
-      <div class="card overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-1/3 w-full p-8 md:p-10">
-            <img
-              src={asset('images/profile.jpg')}
-              alt={`Profile picture of ${profile.name}`}
-              class="rounded-xl w-64 h-80 mx-auto object-cover ring-1 ring-stone-200"
-              loading="eager"
-            />
+    <section class="pt-20 md:pt-32 pb-16 md:pb-24">
+      <div class="flex flex-col-reverse md:flex-row md:items-start md:justify-between gap-10">
+        <div class="flex-1">
+          <p class="eyebrow mb-6">Software engineer · Charlotte, NC</p>
+          <h1 class="font-serif text-stone-900 text-5xl md:text-7xl leading-[1.02] tracking-tight mb-8">
+            Hi, I'm Vibhu.
+          </h1>
+          <p class="text-xl md:text-2xl text-stone-700 leading-snug font-light mb-10 max-w-xl">
+            I build full-stack tools, LLM applications, and security research
+            prototypes — usually somewhere at the intersection.
+          </p>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <a href={`mailto:${profile.email}`} class="arrow-link">Email</a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link">GitHub</a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link">LinkedIn</a>
           </div>
+        </div>
 
-          <div class="md:w-2/3 w-full p-8 md:p-10">
-            <p class="eyebrow mb-3">Welcome</p>
-            <h2 class="font-serif text-5xl md:text-6xl text-stone-900 mb-6 leading-tight">
-              Hi, I'm Vibhu.
-            </h2>
-            <p class="text-lg text-stone-600 leading-relaxed mb-6">
-              {profile.bio}
-            </p>
-            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-stone-600">
-              <span class="inline-flex items-center gap-2">
-                <i class="fas fa-location-dot text-stone-400 text-xs"></i>
-                {profile.location}
-              </span>
-              <span class="text-stone-300">·</span>
-              <span class="inline-flex items-center gap-2">
-                <i class="fas fa-flag-usa text-stone-400 text-xs"></i>
-                {profile.citizenship}
-              </span>
-            </div>
-          </div>
+        <div class="flex-shrink-0">
+          <img
+            src={asset('images/profile.jpg')}
+            alt={`Portrait of ${profile.name}`}
+            class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-1 ring-stone-200"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <Section id="education" eyebrow="Academic" title="Education">
-      <div class="grid md:grid-cols-2 gap-6">
-        {
-          education.map((edu) => (
-            <div class="card card-hover p-8 md:p-10">
-              <div class="flex items-start gap-5">
-                <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center overflow-hidden">
-                  {edu.logo ? (
-                    <img src={asset(edu.logo)} alt="" class="w-10 h-10 object-contain" />
-                  ) : (
-                    <i class={`${edu.iconClass} text-stone-600 text-xl`} />
-                  )}
-                </div>
-                <div class="flex-grow">
-                  <h3 class="text-lg font-semibold text-stone-900">{edu.school}</h3>
-                  <p class="text-stone-700 text-sm mt-1">{edu.degree}</p>
-                  <p class="text-stone-500 text-xs mt-1">{edu.dates} · {edu.location}</p>
-                  <p class="text-stone-600 text-sm mt-4">
-                    <span class="font-medium text-stone-700">Concentration:</span> {edu.concentration}
-                  </p>
-                  <p class="text-stone-600 text-sm mt-2 leading-relaxed">
-                    <span class="font-medium text-stone-700">Coursework:</span> {edu.coursework}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
+    <!-- Currently -->
+    <section class="pb-4">
+      <div class="grid md:grid-cols-[auto_1fr] md:gap-12 gap-3">
+        <p class="eyebrow md:pt-1">Currently</p>
+        <p class="text-lg text-stone-700 leading-relaxed">
+          Finishing my B.S. in <span class="text-stone-900">Software Engineering</span> (Data Science) at
+          East Carolina University. Starting an M.S. in <span class="text-stone-900">Cybersecurity</span>
+          at UNC Charlotte this fall, concentration in Network Security.
+        </p>
       </div>
-    </Section>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Selected work -->
+    <section id="work">
+      <div class="flex items-baseline justify-between mb-12">
+        <h2 class="eyebrow">Selected work</h2>
+        <span class="text-xs text-stone-400">2025 — 2026</span>
+      </div>
+
+      <ol class="space-y-16">
+        {
+          projects.map((p, i) => {
+            const meta = projectMeta[p.name];
+            return (
+              <li>
+                <div class="flex items-start gap-5 md:gap-8">
+                  <span class="font-serif text-3xl md:text-4xl text-stone-300 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+                      <h3 class="text-xl md:text-2xl font-semibold text-stone-900 tracking-tight">
+                        {p.name}
+                      </h3>
+                      <span class="text-xs text-stone-400 whitespace-nowrap tabular-nums">
+                        {yearRange(p.dates)}
+                      </span>
+                    </div>
+                    {meta && (
+                      <p class="text-sm text-stone-500 mb-4">{meta.role}</p>
+                    )}
+                    <p class="text-base text-stone-700 leading-relaxed mb-5 max-w-2xl">
+                      {meta?.summary ?? p.bullets[0]}
+                    </p>
+                    <div class="flex flex-wrap gap-x-3 gap-y-1">
+                      {
+                        p.tags.map((t, idx) => (
+                          <>
+                            {idx > 0 && <span class="text-stone-300">·</span>}
+                            <span class="tag">{t}</span>
+                          </>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </section>
+
+    <div class="rule"></div>
 
     <!-- Experience -->
-    <Section id="experience" eyebrow="Career" title="Work Experience">
-      <div class="space-y-6">
+    <section id="experience">
+      <h2 class="eyebrow mb-12">Experience</h2>
+      <ol class="space-y-12">
         {
-          experience.map((exp) => (
-            <div class="card card-hover p-8 md:p-10">
-              <div class="flex items-start gap-6">
-                <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center overflow-hidden">
-                  {exp.logo && (
-                    <img src={asset(exp.logo)} alt="" class="w-10 h-10 object-contain" />
-                  )}
-                </div>
-                <div class="flex-grow">
-                  <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1 mb-4">
-                    <div>
-                      <h3 class="text-xl md:text-2xl font-semibold text-stone-900">{exp.role}</h3>
-                      <p class="text-stone-600 text-sm mt-1">{exp.org}</p>
-                    </div>
-                    <p class="text-xs text-stone-500 md:text-right whitespace-nowrap">{exp.dates}</p>
-                  </div>
-                  <ul class="space-y-3 text-stone-600 text-sm md:text-base leading-relaxed">
-                    {
-                      exp.bullets.map((b) => (
-                        <li class="flex items-start gap-3">
-                          <span class="bullet" />
-                          <span>{b}</span>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
+          experience.map((e) => (
+            <li class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10">
+              <p class="text-sm text-stone-400 tabular-nums tracking-wide whitespace-nowrap md:pt-1">
+                {yearRange(e.dates)}
+              </p>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-900 tracking-tight">
+                  {e.role}
+                </h3>
+                <p class="text-sm text-stone-500 mb-3">{e.org}</p>
+                <p class="text-base text-stone-700 leading-relaxed max-w-2xl">
+                  {experienceMeta[e.role] ?? e.bullets[0]}
+                </p>
               </div>
-            </div>
+            </li>
           ))
         }
-      </div>
-    </Section>
+      </ol>
+    </section>
 
-    <!-- Projects -->
-    <Section id="projects" eyebrow="Selected Work" title="Featured Projects">
-      <div class="grid md:grid-cols-2 gap-6">
-        {
-          featuredProject && (
-            <div class="card card-hover overflow-hidden flex flex-col md:col-span-2">
-              <div class="p-7 md:p-10 flex flex-col flex-grow">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1 mb-2">
-                  <div>
-                    <p class="text-xs font-medium text-stone-500 uppercase tracking-wider mb-1">{featuredProject.kind}</p>
-                    <h3 class="text-2xl font-semibold text-stone-900">{featuredProject.name}</h3>
-                    {featuredProject.subtitle && (
-                      <p class="text-sm text-stone-500 mt-1">{featuredProject.subtitle}</p>
-                    )}
-                  </div>
-                  <span class="text-xs text-stone-500 whitespace-nowrap md:text-right">{featuredProject.dates}</span>
-                </div>
-                <ul class="space-y-2 text-stone-600 text-sm md:text-base leading-relaxed mt-4 mb-6 flex-grow">
-                  {
-                    featuredProject.bullets.map((b) => (
-                      <li class="flex items-start gap-3">
-                        <span class="bullet" />
-                        <span>{b}</span>
-                      </li>
-                    ))
-                  }
-                </ul>
-                <div class="flex flex-wrap gap-2">
-                  {featuredProject.tags.map((t) => <span class="tag">{t}</span>)}
-                </div>
-              </div>
-            </div>
-          )
-        }
+    <div class="rule"></div>
 
-        {
-          otherProjects.map((p) => (
-            <div class="card card-hover overflow-hidden flex flex-col">
-              <div class="p-7 flex flex-col flex-grow">
-                <div class="flex justify-between items-start mb-2 gap-3">
-                  <div>
-                    <p class="text-xs font-medium text-stone-500 uppercase tracking-wider mb-1">{p.kind}</p>
-                    <h3 class="text-xl font-semibold text-stone-900">{p.name}</h3>
-                  </div>
-                  <span class="text-xs text-stone-500 whitespace-nowrap mt-1">{p.dates}</span>
-                </div>
-                {p.org && <p class="text-sm text-stone-500 mb-4">{p.org}</p>}
-                <ul class="space-y-2 text-stone-600 text-sm leading-relaxed mb-6 flex-grow">
-                  {
-                    p.bullets.map((b) => (
-                      <li class="flex items-start gap-3">
-                        <span class="bullet" />
-                        <span>{b}</span>
-                      </li>
-                    ))
-                  }
-                </ul>
-                <div class="flex flex-wrap gap-2">
-                  {p.tags.map((t) => <span class="tag">{t}</span>)}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </Section>
-
-    <!-- Skills -->
-    <Section id="skills" eyebrow="Toolkit" title="Technical Skills">
-      <div class="grid md:grid-cols-2 gap-6">
+    <!-- Stack -->
+    <section id="stack">
+      <h2 class="eyebrow mb-12">Stack</h2>
+      <dl class="space-y-7">
         {
           skillGroups.map((group) => (
-            <div class="card p-8">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
-                  <i class={`${group.iconClass} text-stone-600 text-sm`} />
-                </div>
-                <h3 class="text-base font-semibold text-stone-900">{group.title}</h3>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                {group.items.map((item) => <span class="tag">{item}</span>)}
-              </div>
+            <div class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 items-baseline">
+              <dt class="text-sm text-stone-500 whitespace-nowrap">
+                {group.title}
+              </dt>
+              <dd class="flex flex-wrap gap-x-3 gap-y-1.5">
+                {
+                  group.items.map((item, idx) => (
+                    <>
+                      {idx > 0 && <span class="text-stone-300">·</span>}
+                      <span class="text-base text-stone-800">{item}</span>
+                    </>
+                  ))
+                }
+              </dd>
             </div>
           ))
         }
-      </div>
-    </Section>
+      </dl>
+    </section>
+
+    <div class="rule"></div>
 
     <!-- Contact -->
-    <section id="contact" class="mb-16">
-      <div class="card p-10 md:p-14 text-center">
-        <p class="eyebrow mb-3">Get in touch</p>
-        <h2 class="font-serif text-4xl md:text-5xl text-stone-900 mb-4 leading-tight">
-          Let's connect.
-        </h2>
-        <p class="text-stone-600 mb-10 max-w-xl mx-auto">
-          I'm always open to new opportunities and collaborations. Feel free to reach out through any of the channels below.
-        </p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200"
-          >
-            <i class="fab fa-github text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
-            <h3 class="font-medium text-stone-900 text-sm">GitHub</h3>
-            <p class="text-xs text-stone-500 mt-1">@VibhuTummallapalli</p>
-          </a>
-
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200"
-          >
-            <i class="fab fa-linkedin-in text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
-            <h3 class="font-medium text-stone-900 text-sm">LinkedIn</h3>
-            <p class="text-xs text-stone-500 mt-1">Connect with me</p>
-          </a>
-
-          <a
-            href={`mailto:${profile.email}`}
-            class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200"
-          >
-            <i class="fas fa-envelope text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
-            <h3 class="font-medium text-stone-900 text-sm">Email</h3>
-            <p class="text-xs text-stone-500 mt-1 truncate w-full text-center">{profile.email}</p>
-          </a>
-
-          <a
-            href={`tel:+1${profile.phone.replace(/-/g, '')}`}
-            class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200"
-          >
-            <i class="fas fa-phone text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
-            <h3 class="font-medium text-stone-900 text-sm">Phone</h3>
-            <p class="text-xs text-stone-500 mt-1">{profile.phone}</p>
-          </a>
-        </div>
+    <section id="contact" class="pb-12">
+      <h2 class="eyebrow mb-6">Get in touch</h2>
+      <p class="font-serif text-3xl md:text-5xl text-stone-900 leading-tight tracking-tight mb-8 max-w-2xl">
+        Open to new grad roles, internships, and research collaborations.
+      </p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={`mailto:${profile.email}`} class="arrow-link text-base">
+          {profile.email}
+        </a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link text-base">
+          GitHub
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link text-base">
+          LinkedIn
+        </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="border-t border-stone-200 py-10">
-    <div class="container mx-auto px-6 text-center max-w-6xl">
-      <p class="text-sm text-stone-600">© {new Date().getFullYear()} {profile.name}</p>
-      <p class="text-xs text-stone-400 mt-1">Built with Astro & Tailwind CSS</p>
+  <footer class="container-prose pb-16 pt-8">
+    <div class="border-t border-stone-200 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="text-xs text-stone-500">
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+      <p class="text-xs text-stone-400">
+        Built with Astro & Tailwind. Hosted on GitHub Pages.
+      </p>
     </div>
   </footer>
 </Layout>

@@ -8,31 +8,42 @@
   }
   body {
     @apply antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    @apply bg-stone-900 text-stone-50;
   }
 }
 
 @layer components {
-  .card {
-    @apply bg-white rounded-2xl border border-stone-200/80 shadow-soft;
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:border-stone-300 hover:shadow-soft-lg hover:-translate-y-0.5;
-  }
-
-  .tag {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700 border border-stone-200;
-  }
-
-  .section-heading {
-    @apply text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight;
+  .container-prose {
+    @apply mx-auto px-6 md:px-8 max-w-3xl;
   }
 
   .eyebrow {
-    @apply text-sm font-medium text-stone-500 uppercase tracking-wider;
+    @apply text-xs font-medium text-stone-500 uppercase tracking-[0.18em];
   }
 
-  .bullet {
-    @apply mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0;
+  .tag {
+    @apply text-xs font-medium text-stone-600;
+  }
+
+  .link {
+    @apply text-stone-900 underline decoration-stone-300 decoration-1 underline-offset-4 hover:decoration-stone-900 transition-colors;
+  }
+
+  .arrow-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-stone-700 hover:text-stone-900 transition-colors;
+  }
+  .arrow-link::after {
+    content: '↗';
+    @apply text-stone-400 text-xs transition-transform;
+  }
+  .arrow-link:hover::after {
+    @apply -translate-y-px translate-x-px text-stone-900;
+  }
+
+  .rule {
+    @apply h-px bg-stone-200 my-20 md:my-28;
   }
 }
