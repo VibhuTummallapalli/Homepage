@@ -6,306 +6,447 @@
     <title>Vibhu Tummallapalli - Personal Homepage</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- ECU Brand Typefaces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <style>
+        :root {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         body {
-            font-family: 'EB Garamond', 'Garamond', serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', 'Avenir Next', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
         }
-        .serif-heading {
-            font-family: 'Roboto Slab', 'Museo Slab', serif;
+        .serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+            letter-spacing: -0.01em;
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
-    
-    <!-- Header Section -->
-    <header class="text-white shadow-lg" style="background: linear-gradient(to right, #592A8A, #7B3FA8);">
+<body class="gradient-bg min-h-screen text-stone-800">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200/60">
         <nav class="container mx-auto px-6 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Vibhu Tummallapalli</h1>
-                <ul class="flex flex-wrap justify-center gap-4 md:gap-6">
-                    <li><a href="#about" class="hover:text-yellow-300 transition-colors duration-300">About</a></li>
-                    <li><a href="#experience" class="hover:text-yellow-300 transition-colors duration-300">Experience</a></li>
-                    <li><a href="#projects" class="hover:text-yellow-300 transition-colors duration-300">Projects</a></li>
-                    <li><a href="#skills" class="hover:text-yellow-300 transition-colors duration-300">Skills</a></li>
-                    <li><a href="#contact" class="hover:text-yellow-300 transition-colors duration-300">Contact</a></li>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <a href="#" class="text-lg font-semibold text-stone-900 tracking-tight">
+                    Vibhu Tummallapalli
+                </a>
+                <ul class="flex flex-wrap justify-center gap-6 md:gap-8">
+                    <li><a href="#about" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About</a></li>
+                    <li><a href="#education" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Education</a></li>
+                    <li><a href="#experience" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Experience</a></li>
+                    <li><a href="#projects" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Projects</a></li>
+                    <li><a href="#skills" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Skills</a></li>
+                    <li><a href="#contact" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
-        
-        <!-- Hero Section with Image and Short Bio -->
-        <section id="about" class="mb-16">
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <main class="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+
+        <!-- Hero Section -->
+        <section id="about" class="mb-24">
+            <div class="card overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center">
-                    <!-- Profile Image -->
-                    <div class="md:w-1/3 w-full p-8">
-                        <img src="./images/profile.jpg" 
-                             alt="Profile picture of Vibhu Tummallapalli" 
-                             class="rounded-lg w-64 h-80 mx-auto object-contain shadow-lg bg-white" style="border: 8px solid #592A8A;">
+                    <div class="md:w-1/3 w-full p-8 md:p-10">
+                        <img src="./images/profile.jpg"
+                             alt="Profile picture of Vibhu Tummallapalli"
+                             class="rounded-xl w-64 h-80 mx-auto object-cover ring-1 ring-stone-200">
                     </div>
-                    
-                    <!-- Bio Content -->
-                    <div class="md:w-2/3 w-full p-8">
-                        <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome! 👋</h2>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            Hi, I'm <span class="font-semibold" style="color: #592A8A;">Vibhu Tummallapalli</span>, a software engineer with a strong foundation in full-stack development. I'm currently pursuing a B.S. in Software Engineering at East Carolina University, with hands-on experience building production-ready tools in both academic and applied settings.
+
+                    <div class="md:w-2/3 w-full p-8 md:p-10">
+                        <p class="text-sm font-medium text-stone-500 mb-3 uppercase tracking-wider">Welcome</p>
+                        <h2 class="serif text-5xl md:text-6xl text-stone-900 mb-6 leading-tight">
+                            Hi, I'm Vibhu.
+                        </h2>
+                        <p class="text-lg text-stone-600 leading-relaxed mb-6">
+                            A software engineer focused on full-stack development, LLM application development, and cybersecurity. I'm finishing my B.S. in Software Engineering (Data Science concentration) at East Carolina University and starting an M.S. in Cybersecurity at UNC Charlotte this fall.
                         </p>
-                        <div class="p-4 rounded-lg" style="background-color: #f3e8ff;">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2"><i class="fas fa-graduation-cap mr-2" style="color: #592A8A;"></i>Education</h3>
-                            <p class="text-gray-700"><strong>Bachelor of Science in Software Engineering</strong></p>
-                            <p class="font-semibold" style="color: #592A8A;">Concentration: Data Science</p>
-                            <p class="text-gray-600">East Carolina University, Greenville, NC</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="inline-flex items-center gap-2 text-sm text-stone-600">
+                                <i class="fas fa-location-dot text-stone-400 text-xs"></i> Charlotte, NC
+                            </span>
+                            <span class="text-stone-300">·</span>
+                            <span class="inline-flex items-center gap-2 text-sm text-stone-600">
+                                <i class="fas fa-flag-usa text-stone-400 text-xs"></i> US Citizen
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Work Experience Section -->
-        <section id="experience" class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Work Experience</h2>
+        <!-- Education -->
+        <section id="education" class="mb-24">
+            <div class="mb-10">
+                <p class="text-sm font-medium text-stone-500 mb-2 uppercase tracking-wider">Academic</p>
+                <h2 class="section-heading">Education</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- UNCC -->
+                <div class="card card-hover p-8 md:p-10">
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-stone-600 text-xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-semibold text-stone-900">University of North Carolina at Charlotte</h3>
+                            <p class="text-stone-700 text-sm mt-1">Master of Science in Cybersecurity</p>
+                            <p class="text-stone-500 text-xs mt-1">Aug 2026 – May 2028 (Expected) · Charlotte, NC</p>
+                            <p class="text-stone-600 text-sm mt-4"><span class="font-medium text-stone-700">Concentration:</span> Network Security</p>
+                            <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+                                <span class="font-medium text-stone-700">Coursework:</span> Network Security, Wireless Network Security, Information Infrastructure Protection, Computer Communications and Networks, Competitive Cyber Defense, Malware Analysis
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ECU -->
+                <div class="card card-hover p-8 md:p-10">
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center overflow-hidden">
+                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-10 h-10 object-contain">
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-semibold text-stone-900">East Carolina University</h3>
+                            <p class="text-stone-700 text-sm mt-1">Bachelor of Science in Software Engineering</p>
+                            <p class="text-stone-500 text-xs mt-1">May 2026 · Greenville, NC</p>
+                            <p class="text-stone-600 text-sm mt-4"><span class="font-medium text-stone-700">Concentration:</span> Data Science</p>
+                            <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+                                <span class="font-medium text-stone-700">Coursework:</span> Artificial Intelligence, Big Data Analytics, NLP, Computer Vision
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="experience" class="mb-24">
+            <div class="mb-10">
+                <p class="text-sm font-medium text-stone-500 mb-2 uppercase tracking-wider">Career</p>
+                <h2 class="section-heading">Work Experience</h2>
+            </div>
             <div class="space-y-6">
                 <!-- Research Assistant -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8">
+                <div class="card card-hover p-8 md:p-10">
                     <div class="flex items-start gap-6">
-                        <!-- Company Logo -->
-                        <div class="flex-shrink-0">
-                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-16 h-16 object-contain">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center overflow-hidden">
+                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-10 h-10 object-contain">
                         </div>
-                        
-                        <!-- Experience Details -->
+
                         <div class="flex-grow">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1 mb-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-800">Undergraduate Research Assistant</h3>
-                                    <p class="text-lg font-semibold" style="color: #592A8A;">ECU College of Engineering and Technology</p>
+                                    <h3 class="text-xl md:text-2xl font-semibold text-stone-900">Undergraduate Research Assistant</h3>
+                                    <p class="text-stone-600 text-sm mt-1">ECU College of Engineering and Technology</p>
                                 </div>
+                                <p class="text-xs text-stone-500 md:text-right whitespace-nowrap">Jun 2025 – May 2026</p>
                             </div>
-                            
-                            <div class="space-y-3 text-gray-700">
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Collaborate with faculty and research teams to support the development and testing of experimental software tools in health tech and cybersecurity domains, ensuring that 100% of features function correctly.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Conduct literature reviews and technical analyses by evaluating design patterns and performance metrics to assist in architectural software design decisions and ensure alignment with research goals.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Design, develop, and evaluate prototypes using modern programming languages and frameworks such as Python, C#, and Java, which results in external datasets being output in a clean and readable fashion thus turning them into actionable insights.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Manage project milestones and code repositories using Git which resulted in reproducibility and the team obtaining 100% of the project tasks on time and in full.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Maintain and configure research environments, including local LLM integrations and dependency management using tools like Maven and Python virtual environments.</span>
-                                </p>
-                            </div>
+
+                            <ul class="space-y-3 text-stone-600 text-sm md:text-base leading-relaxed">
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                    <span>Contributed to 3 faculty research projects in health tech and cybersecurity, owning prototype implementation from design through validation.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                    <span>Built data ingestion prototypes in Python, C#, and Java that processed external datasets into clean, structured outputs, informed by literature reviews and performance trade-off analyses.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                    <span>Maintained research environments (Python venvs, Maven, local LLM integrations) and managed Git repositories supporting reproducibility across team members.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- Learning Assistant -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8">
+                <div class="card card-hover p-8 md:p-10">
                     <div class="flex items-start gap-6">
-                        <!-- Company Logo -->
-                        <div class="flex-shrink-0">
-                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-16 h-16 object-contain">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center overflow-hidden">
+                            <img src="./images/ecu-logo.avif" alt="ECU Logo" class="w-10 h-10 object-contain">
                         </div>
-                        
-                        <!-- Experience Details -->
+
                         <div class="flex-grow">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1 mb-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-800">Learning Assistant</h3>
-                                    <p class="text-lg font-semibold" style="color: #592A8A;">East Carolina University</p>
+                                    <h3 class="text-xl md:text-2xl font-semibold text-stone-900">Learning Assistant</h3>
+                                    <p class="text-stone-600 text-sm mt-1">Thomas Harriot College of Arts & Sciences</p>
                                 </div>
+                                <p class="text-xs text-stone-500 md:text-right whitespace-nowrap">Jan 2023 – Jan 2026</p>
                             </div>
-                            
-                            <div class="space-y-3 text-gray-700">
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Tutor 50+ students in subjects including Algebra, Calculus, and Statistics by coming up with educational strategies resulting in 75% of students obtaining 4.0 GPA in that course.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Work with struggling students to improve academic performance through weekly review sessions, resulting in raising test scores from failing to 80%+.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Provide both personal and group support during office hours, clarifying test results and reinforcing coursework, resulting in improved student comprehension and confidence.</span>
-                                </p>
-                                <p class="flex items-start">
-                                    <span class="mr-2 mt-1" style="color: #FEC923;">•</span>
-                                    <span>Assist professors during class by taking attendance, answering phone calls, managing classroom materials, and helping set up equipment for demonstrations which allowed for successful class sessions.</span>
-                                </p>
-                            </div>
+
+                            <ul class="space-y-3 text-stone-600 text-sm md:text-base leading-relaxed">
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                    <span>Tutored 50+ students in Algebra, Calculus, and Statistics through weekly review sessions and office hours, raising failing test scores to 80%+ and helping 75% of students achieve a 4.0 in the course.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                    <span>Supported professors during class by managing materials, taking attendance, and assisting with demonstrations, while reinforcing coursework one-on-one and in groups to improve student comprehension.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Technical Skills</h2>
-            
-            <!-- Programming Languages -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Programming Languages</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <!-- Python -->
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                        <img src="./images/python-logo.webp" alt="Python" class="w-16 h-16 object-contain mb-2 mx-auto">
-                        <h4 class="font-semibold text-gray-800 text-sm">Python</h4>
-                    </div>
-                    
-                    <!-- Java -->
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                        <img src="./images/java-logo.webp" alt="Java" class="w-16 h-16 object-contain mb-2 mx-auto">
-                        <h4 class="font-semibold text-gray-800 text-sm">Java</h4>
-                    </div>
-                    
-                    <!-- C# -->
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                        <img src="./images/csharp-logo.webp" alt="C#" class="w-16 h-16 object-contain mb-2 mx-auto">
-                        <h4 class="font-semibold text-gray-800 text-sm">C#</h4>
-                    </div>
-                    
-                    <!-- JavaScript -->
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                        <img src="./images/javascript-logo.webp" alt="JavaScript" class="w-16 h-16 object-contain mb-2 mx-auto">
-                        <h4 class="font-semibold text-gray-800 text-sm">JavaScript</h4>
-                    </div>
-                    
-                    <!-- SQL -->
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
-                        <img src="./images/sql-logo.webp" alt="SQL" class="w-16 h-16 object-contain mb-2 mx-auto">
-                        <h4 class="font-semibold text-gray-800 text-sm">SQL</h4>
+        <!-- Projects -->
+        <section id="projects" class="mb-24">
+            <div class="mb-10">
+                <p class="text-sm font-medium text-stone-500 mb-2 uppercase tracking-wider">Selected Work</p>
+                <h2 class="section-heading">Featured Projects</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- NC EMPT -->
+                <div class="card card-hover overflow-hidden flex flex-col md:col-span-2">
+                    <div class="p-7 md:p-10 flex flex-col flex-grow">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1 mb-2">
+                            <div>
+                                <p class="text-xs font-medium text-stone-500 uppercase tracking-wider mb-1">Senior Capstone</p>
+                                <h3 class="text-2xl font-semibold text-stone-900">NC Early Mathematics Placement Testing</h3>
+                                <p class="text-sm text-stone-500 mt-1">Online Testing System</p>
+                            </div>
+                            <span class="text-xs text-stone-500 whitespace-nowrap md:text-right">Aug 2025 – May 2026</span>
+                        </div>
+                        <ul class="space-y-2 text-stone-600 text-sm md:text-base leading-relaxed mt-4 mb-6 flex-grow">
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Built a full-stack web platform (React 19/Vite, .NET 8, EF Core, PostgreSQL) used by 60 NC high schools and 5,000+ students, with a version-controlled question bank, automated grading, and session-based access control.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Implemented role-based access (Admin/Coordinator/Proctor/Student) with JWT and 2FA, plus real-time SignalR proctor monitoring with live tracking and pause/resume controls.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Architected an asynchronous email pipeline via GCP Pub/Sub and a Python Cloud Function; deployed to GCP (App Engine, Cloud Run) through GitHub Actions CI/CD as part of a 5-member Agile team using GitLab.</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">React 19</span>
+                            <span class="tag">Vite</span>
+                            <span class="tag">.NET 8</span>
+                            <span class="tag">EF Core</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">SignalR</span>
+                            <span class="tag">JWT</span>
+                            <span class="tag">GCP</span>
+                            <span class="tag">GitHub Actions</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Metamorphic Testing -->
+                <div class="card card-hover overflow-hidden flex flex-col">
+                    <div class="p-7 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2 gap-3">
+                            <div>
+                                <p class="text-xs font-medium text-stone-500 uppercase tracking-wider mb-1">Research</p>
+                                <h3 class="text-xl font-semibold text-stone-900">Metamorphic Testing of Multi-Agent AI Systems</h3>
+                            </div>
+                            <span class="text-xs text-stone-500 whitespace-nowrap mt-1">Apr 2026</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4">ECU College of Engineering and Technology</p>
+                        <ul class="space-y-2 text-stone-600 text-sm leading-relaxed mb-6 flex-grow">
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Designed a novel catalog of 9 metamorphic relations to test multi-agent LLM systems where traditional test oracles fail (interchangeability, redundancy invariance, graceful degradation, etc.).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Built a reusable Python framework with multi-dimensional semantic verifiers (token overlap, difflib similarity, length ratios) to address the test oracle problem for LLM outputs.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Implemented CrewAI test harnesses against domain tasks (financial risk, healthcare cloud security, SaaS market research), executing experiments across OpenAI and Ollama backends via LangChain.</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">Python</span>
+                            <span class="tag">CrewAI</span>
+                            <span class="tag">LangChain</span>
+                            <span class="tag">OpenAI</span>
+                            <span class="tag">Ollama</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Dental Charting Tool -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=300&fit=crop" 
-                         alt="Dental Charting Tool" 
-                         class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-2xl font-bold text-gray-800">Dental Charting Tool</h3>
-                            <span class="text-sm text-gray-600 whitespace-nowrap">Jun - Jul 2025</span>
+                <div class="card card-hover overflow-hidden flex flex-col">
+                    <div class="p-7 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2 gap-3">
+                            <div>
+                                <p class="text-xs font-medium text-stone-500 uppercase tracking-wider mb-1">Applied Research</p>
+                                <h3 class="text-xl font-semibold text-stone-900">Dental Charting Tool</h3>
+                            </div>
+                            <span class="text-xs text-stone-500 whitespace-nowrap mt-1">Jun 2025 – Jan 2026</span>
                         </div>
-                        <p class="font-semibold mb-3" style="color: #592A8A;">ECU College of Engineering and Technology</p>
-                        <div class="space-y-2 text-gray-600 text-sm mb-4">
-                            <p>• Developed a desktop application using WPF (.NET) and C# to assist dentists in charting and managing patient treatments across multiple visits.</p>
-                            <p>• Designed and implemented an interactive tooth chart UI that allows users to select individual teeth and apply color coded procedures.</p>
-                            <p>• Integrated a local large language model (LLM) using Ollama and HttpClient to power an AI chat assistant capable of answering treatment-related questions in real time.</p>
-                        </div>
+                        <p class="text-sm text-stone-500 mb-4">ECU College of Engineering and Technology</p>
+                        <ul class="space-y-2 text-stone-600 text-sm leading-relaxed mb-6 flex-grow">
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Built a WPF (.NET)/C# desktop app for the ECU School of Dental Medicine integrating GPT-4o Vision for radiographic analysis, FDI tooth-numbering charting, CDT-coded procedure cataloging, and urgency-based appointment scheduling.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-2 w-1 h-1 rounded-full bg-stone-400 flex-shrink-0"></span>
+                                <span>Engineered a 5-step prompt pipeline (observation, chart cross-reference, medical alerts, CDT recommendations, urgency triage) for clinically contextualized output; presented at ECU RCAW and CORAS 2026.</span>
+                            </li>
+                        </ul>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">C#</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">WPF</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">.NET</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">Ollama</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- AR Glasses Video Streamer -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <img src="https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=600&h=300&fit=crop" 
-                         alt="AR Glasses Video Streamer" 
-                         class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-2xl font-bold text-gray-800">AR Glasses Video Streamer</h3>
-                            <span class="text-sm text-gray-600 whitespace-nowrap">Jul - Aug 2025</span>
-                        </div>
-                        <p class="font-semibold mb-3" style="color: #592A8A;">ECU College of Engineering and Technology</p>
-                        <div class="space-y-2 text-gray-600 text-sm mb-4">
-                            <p>• Created a Java-based application for Vuzix AR glasses that enables silent, real-time video streaming from elderly users to remote nursing home staff.</p>
-                            <p>• Utilized the Camera2 API and MediaCodec for efficient video capture, encoding, and transmission with minimal system overhead.</p>
-                            <p>• Engineered a background service that automatically launches at startup and streams video without requiring user interaction, ensuring ease of use for elderly individuals.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">Java</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">Android</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #f3e8ff; color: #592A8A;">Camera2 API</span>
-                            <span class="px-3 py-1 rounded-full text-sm" style="background-color: #fff9e6; color: #b8860b;">MediaCodec</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">WPF</span>
+                            <span class="tag">.NET</span>
+                            <span class="tag">GPT-4o Vision</span>
+                            <span class="tag">Ollama</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Links/Contact Section -->
+        <!-- Skills -->
+        <section id="skills" class="mb-24">
+            <div class="mb-10">
+                <p class="text-sm font-medium text-stone-500 mb-2 uppercase tracking-wider">Toolkit</p>
+                <h2 class="section-heading">Technical Skills</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Languages -->
+                <div class="card p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
+                            <i class="fas fa-code text-stone-600 text-sm"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-stone-900">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Python</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Rust</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </div>
+
+                <!-- AI / ML -->
+                <div class="card p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
+                            <i class="fas fa-brain text-stone-600 text-sm"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-stone-900">AI / ML</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">LLM Application Dev</span>
+                        <span class="tag">CrewAI</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">Anthropic Claude API</span>
+                        <span class="tag">Claude Code</span>
+                        <span class="tag">GPT-4o</span>
+                        <span class="tag">OpenAI Vision</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">PyTorch</span>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Web -->
+                <div class="card p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-stone-600 text-sm"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-stone-900">Frameworks & Web</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">.NET 8</span>
+                        <span class="tag">ASP.NET Core</span>
+                        <span class="tag">Entity Framework Core</span>
+                        <span class="tag">WPF</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Vite</span>
+                        <span class="tag">SignalR</span>
+                        <span class="tag">JWT</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & Tools -->
+                <div class="card p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
+                            <i class="fas fa-cloud text-stone-600 text-sm"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-stone-900">Cloud & Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">GCP App Engine</span>
+                        <span class="tag">Cloud Run</span>
+                        <span class="tag">Pub/Sub</span>
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">GitLab CI</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">PowerShell</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
         <section id="contact" class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Let's Connect</h2>
-            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
-                <p class="text-center text-lg text-gray-600 mb-8">
-                    I'm always open to new opportunities and collaborations. Feel free to reach out!
+            <div class="card p-10 md:p-14 text-center">
+                <p class="text-sm font-medium text-stone-500 mb-3 uppercase tracking-wider">Get in touch</p>
+                <h2 class="serif text-4xl md:text-5xl text-stone-900 mb-4 leading-tight">Let's connect.</h2>
+                <p class="text-stone-600 mb-10 max-w-xl mx-auto">
+                    I'm always open to new opportunities and collaborations. Feel free to reach out through any of the channels below.
                 </p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- GitHub -->
-                    <a href="https://github.com/vibhutummallapalli" 
-                       target="_blank" 
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+                    <a href="https://github.com/VibhuTummallapalli"
+                       target="_blank"
                        rel="noopener noreferrer"
-                       class="flex flex-col items-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300 group">
-                        <i class="fab fa-github text-5xl text-gray-800 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h3 class="font-semibold text-gray-800">GitHub</h3>
-                        <p class="text-sm text-gray-600">@vibhutummallapalli</p>
+                       class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200">
+                        <i class="fab fa-github text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
+                        <h3 class="font-medium text-stone-900 text-sm">GitHub</h3>
+                        <p class="text-xs text-stone-500 mt-1">@VibhuTummallapalli</p>
                     </a>
-                    
-                    <!-- LinkedIn -->
-                    <a href="https://linkedin.com/in/vibhutummallapalli" 
-                       target="_blank" 
+
+                    <a href="https://linkedin.com/in/vibhutummallapalli"
+                       target="_blank"
                        rel="noopener noreferrer"
-                       class="flex flex-col items-center p-6 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 group">
-                        <i class="fab fa-linkedin text-5xl text-blue-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h3 class="font-semibold text-gray-800">LinkedIn</h3>
-                        <p class="text-sm text-gray-600">Connect with me</p>
+                       class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200">
+                        <i class="fab fa-linkedin-in text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
+                        <h3 class="font-medium text-stone-900 text-sm">LinkedIn</h3>
+                        <p class="text-xs text-stone-500 mt-1">Connect with me</p>
                     </a>
-                    
-                    <!-- Email -->
-                    <a href="mailto:vibhu.tummallapalli@gmail.com" 
-                       class="flex flex-col items-center p-6 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-300 group">
-                        <i class="fas fa-envelope text-5xl text-red-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h3 class="font-semibold text-gray-800">Email</h3>
-                        <p class="text-sm text-gray-600">vibhu.tummallapalli@gmail.com</p>
+
+                    <a href="mailto:vibhu.tummallapalli@gmail.com"
+                       class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200">
+                        <i class="fas fa-envelope text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
+                        <h3 class="font-medium text-stone-900 text-sm">Email</h3>
+                        <p class="text-xs text-stone-500 mt-1 truncate w-full text-center">vibhu.tummallapalli@gmail.com</p>
                     </a>
-                    
-                    <!-- Phone -->
-                    <a href="tel:+19199099573" 
-                       class="flex flex-col items-center p-6 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300 group">
-                        <i class="fas fa-phone text-5xl text-green-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h3 class="font-semibold text-gray-800">Phone</h3>
-                        <p class="text-sm text-gray-600">919-909-9573</p>
-                    </a>
-                    
-                    <!-- Portfolio -->
-                    <a href="#" 
-                       class="flex flex-col items-center p-6 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-300 group">
-                        <i class="fas fa-globe text-5xl text-purple-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h3 class="font-semibold text-gray-800">Portfolio</h3>
-                        <p class="text-sm text-gray-600">View my work</p>
+
+                    <a href="tel:+19199099573"
+                       class="group flex flex-col items-center p-6 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-all duration-200">
+                        <i class="fas fa-phone text-2xl text-stone-700 mb-3 group-hover:text-stone-900 transition-colors"></i>
+                        <h3 class="font-medium text-stone-900 text-sm">Phone</h3>
+                        <p class="text-xs text-stone-500 mt-1">919-909-9573</p>
                     </a>
                 </div>
             </div>
@@ -314,32 +455,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-lg mb-2">© 2026 Vibhu Tummallapalli. All rights reserved.</p>
-            <p class="text-gray-400">Built with HTML, CSS, and Tailwind CSS</p>
+    <footer class="border-t border-stone-200 py-10">
+        <div class="container mx-auto px-6 text-center max-w-6xl">
+            <p class="text-sm text-stone-600">© 2026 Vibhu Tummallapalli</p>
+            <p class="text-xs text-stone-400 mt-1">Built with HTML & Tailwind CSS</p>
         </div>
     </footer>
-
-    <script>
-        function toggleExperience(button) {
-            const content = button.previousElementSibling.querySelector('.extra-content');
-            const text = button.querySelector('.read-more-text');
-            const icon = button.querySelector('i');
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                text.textContent = 'Read less';
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                content.classList.add('hidden');
-                text.textContent = 'Read more';
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-        }
-    </script>
 
 </body>
 </html>
