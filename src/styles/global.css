@@ -60,13 +60,7 @@
   }
 
   .rule {
-    @apply h-px my-20 md:my-28;
-    background: linear-gradient(
-      to right,
-      transparent,
-      theme('colors.navy.100'),
-      transparent
-    );
+    @apply h-px bg-navy-200 my-20 md:my-28;
   }
 }
 
