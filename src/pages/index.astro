@@ -96,12 +96,16 @@ const yearRange = (s: string) =>
         <span class="text-xs text-stone-400">2025 — 2026</span>
       </div>
 
-      <ol class="space-y-16">
+      <ol class="space-y-8 md:space-y-10">
         {
           projects.map((p, i) => {
             const meta = projectMeta[p.name];
+            const hoverBg = i % 2 === 0 ? 'hover:bg-navy-50' : 'hover:bg-stone-100';
             return (
-              <li data-reveal>
+              <li
+                class={`transition-colors duration-300 rounded-xl px-4 md:px-6 py-5 md:py-6 -mx-4 md:-mx-6 ${hoverBg}`}
+                data-reveal
+              >
                 <div class="flex items-start gap-5 md:gap-8">
                   <span class="font-serif text-3xl md:text-4xl text-navy-400 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
                     {String(i + 1).padStart(2, '0')}
@@ -145,10 +149,15 @@ const yearRange = (s: string) =>
     <!-- Experience -->
     <section id="experience">
       <h2 class="eyebrow mb-12" data-reveal>Experience</h2>
-      <ol class="space-y-12">
+      <ol class="space-y-4 md:space-y-6">
         {
-          experience.map((e) => (
-            <li class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10" data-reveal>
+          experience.map((e, i) => (
+            <li
+              class={`grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 transition-colors duration-300 rounded-xl px-4 md:px-6 py-5 md:py-6 -mx-4 md:-mx-6 ${
+                i % 2 === 0 ? 'hover:bg-navy-50' : 'hover:bg-stone-100'
+              }`}
+              data-reveal
+            >
               <p class="text-sm text-navy-500 tabular-nums tracking-wide whitespace-nowrap md:pt-1">
                 {yearRange(e.dates)}
               </p>
@@ -172,10 +181,15 @@ const yearRange = (s: string) =>
     <!-- Stack -->
     <section id="stack">
       <h2 class="eyebrow mb-12" data-reveal>Stack</h2>
-      <dl class="space-y-7">
+      <dl class="space-y-1 md:space-y-2">
         {
-          skillGroups.map((group) => (
-            <div class="grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 items-baseline" data-reveal>
+          skillGroups.map((group, i) => (
+            <div
+              class={`grid md:grid-cols-[10rem_1fr] gap-2 md:gap-10 items-baseline transition-colors duration-300 rounded-xl px-4 md:px-6 py-4 md:py-5 -mx-4 md:-mx-6 ${
+                i % 2 === 0 ? 'hover:bg-navy-50' : 'hover:bg-stone-100'
+              }`}
+              data-reveal
+            >
               <dt class="text-sm text-navy-600 whitespace-nowrap font-medium">
                 {group.title}
               </dt>
