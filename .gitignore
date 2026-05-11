@@ -1,24 +1,27 @@
-# Logs
-*.log
-npm-debug.log*
+# build output
+dist/
+.astro/
 
-# Dependency directories
+# dependencies
 node_modules/
 
-# Build output (keep dist/ for GitHub Pages)
-# dist/
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# IDE files
+# environment variables
+.env
+.env.local
+.env.production
+
+# editor / OS / agent
+.claude/
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS files
 .DS_Store
 Thumbs.db
-
-# Environment variables
-.env
-.env.local

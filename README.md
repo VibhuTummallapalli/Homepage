@@ -1,103 +1,48 @@
-# Personal Homepage - Vibhu Tummallapalli
+# Homepage
 
-A responsive personal homepage built with HTML, CSS, and Tailwind CSS.
+Personal homepage for Vibhu Tummallapalli. Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com) and deployed to GitHub Pages.
 
-## Features
+Live: https://vibhutummallapalli.github.io/Homepage/
 
-- ✨ Modern, clean design with gradient backgrounds
-- 📱 Fully responsive layout (mobile, tablet, desktop)
-- 🎨 Styled with Tailwind CSS utility classes
-- 🖼️ Image gallery and profile section
-- 🔗 Social media links (GitHub, LinkedIn, Email, Portfolio)
-- 📊 Skills showcase with icons
-- 💼 Featured projects section
-- 🚀 Fast and lightweight
+## Tech
 
-## Technologies Used
+- **Astro 5** — static site generator, zero JS by default
+- **Tailwind CSS 3** — utility-first styling via `@astrojs/tailwind`
+- **TypeScript** — content lives in [`src/data/site.ts`](src/data/site.ts)
+- **GitHub Actions** — auto-deploy on push to `main`
 
-- HTML5
-- CSS3
-- Tailwind CSS v3.4
-- Font Awesome icons
-- GitHub Pages / Netlify
+## Develop
 
-## Local Development
-
-1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd Personal-Homepage-Vibhu-Tummallapalli
-```
-
-2. Install dependencies
 ```bash
 npm install
+npm run dev      # http://localhost:4321
+npm run build    # outputs to ./dist
+npm run preview  # serve the build locally
 ```
 
-3. Build Tailwind CSS
-```bash
-npm run build
-```
-
-4. Open `index.html` in your browser
-
-## Deployment
-
-### GitHub Pages
-
-1. Push code to GitHub
-2. Go to repository Settings → Pages
-3. Select branch (main) and folder (/ root)
-4. Save and wait for deployment
-
-### Netlify
-
-1. Push code to GitHub
-2. Log in to [Netlify](https://netlify.com)
-3. Click "New site from Git"
-4. Select your repository
-5. Build command: `npm run build`
-6. Publish directory: `.`
-7. Deploy site
-
-## Project Structure
+## Project structure
 
 ```
-Personal-Homepage-Vibhu-Tummallapalli/
-├── index.html              # Main HTML file
+.
+├── .github/workflows/deploy.yml   # GitHub Pages deploy
+├── astro.config.mjs               # site + base config
+├── public/                        # static assets served at /Homepage/*
+│   ├── favicon.svg
+│   └── images/                    # profile + logos
 ├── src/
-│   └── input.css          # Tailwind CSS source
-├── dist/
-│   └── output.css         # Compiled CSS
-├── package.json           # Node dependencies
-├── tailwind.config.js     # Tailwind configuration
-├── netlify.toml          # Netlify configuration
-└── README.md             # This file
+│   ├── components/                # Nav, Section
+│   ├── data/site.ts               # all page content
+│   ├── layouts/Layout.astro       # HTML shell
+│   ├── pages/index.astro          # homepage
+│   └── styles/global.css          # Tailwind layer + custom components
+├── tailwind.config.mjs
+└── tsconfig.json
 ```
 
-## Customization
+## Editing content
 
-To personalize this homepage:
+All resume content (bio, education, experience, projects, skills, contact links) lives in [`src/data/site.ts`](src/data/site.ts). Update that file and the page re-renders.
 
-1. Update the content in `index.html`:
-   - Change name, bio, and description
-   - Update social media links
-   - Add your own projects
-   - Replace profile image URL
+## Deploy
 
-2. Modify colors in Tailwind classes:
-   - Primary color scheme uses `indigo` and `purple`
-   - Update class names to use different colors
-
-3. Rebuild CSS after changes:
-```bash
-npm run build
-```
-
-## License
-
-MIT
-
-## Author
-
-Vibhu Tummallapalli
+The workflow `.github/workflows/deploy.yml` builds with `withastro/action@v3` and publishes via `actions/deploy-pages@v4`. **One-time setup**: in repo Settings → Pages, set **Source** to **GitHub Actions**.
