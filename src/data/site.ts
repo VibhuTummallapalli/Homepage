@@ -74,6 +74,8 @@ export const experience: Experience[] = [
   },
 ];
 
+export type ProjectLink = { href: string; label: string };
+
 export type Project = {
   name: string;
   kind: string;
@@ -83,6 +85,7 @@ export type Project = {
   bullets: string[];
   tags: string[];
   featured?: boolean;
+  links?: ProjectLink[];
 };
 
 export const projects: Project[] = [
@@ -122,6 +125,35 @@ export const projects: Project[] = [
       'Engineered a 5-step prompt pipeline (observation, chart cross-reference, medical alerts, CDT recommendations, urgency triage) for clinically contextualized output; presented at ECU RCAW and CORAS 2026.',
     ],
     tags: ['C#', 'WPF', '.NET', 'GPT-4o Vision', 'Ollama'],
+    links: [
+      { href: 'Dental_Charting_Poster_CORAS_2026.pdf', label: 'View poster (CORAS 2026)' },
+    ],
+  },
+  {
+    name: 'TetherLog',
+    kind: 'Coursework',
+    dates: 'Apr 2026 – May 2026',
+    bullets: [
+      'A book-tracking site where readers log progress, follow each other, and post reading updates. Authors can publish and manage their own books.',
+      'React/Vite frontend; Node.js/Express + SQLite backend with JWT authentication and role-based access (Reader, Author).',
+    ],
+    tags: ['React', 'Vite', 'Node.js', 'Express', 'SQLite', 'JWT'],
+    links: [
+      { href: 'https://github.com/VibhuTummallapalli/TetherLog', label: 'View on GitHub' },
+    ],
+  },
+  {
+    name: 'QuickDigest',
+    kind: 'Coursework',
+    dates: 'Apr 2026',
+    bullets: [
+      'A news-article summarizer with NLP analysis (sentiment, named entities, keywords) powered by a local Ollama LLM.',
+      'Configurable short/medium/long summaries with ROUGE evaluation against reference text. Built with Node.js/Express.',
+    ],
+    tags: ['Node.js', 'Express', 'Ollama', 'JavaScript', 'NLP'],
+    links: [
+      { href: 'https://github.com/VibhuTummallapalli/QuickDigest', label: 'View on GitHub' },
+    ],
   },
 ];
 
