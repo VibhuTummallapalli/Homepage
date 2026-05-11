@@ -23,6 +23,16 @@ const projectMeta: Record<string, { summary: string; role: string }> = {
     summary:
       'WPF/.NET desktop app for radiograph analysis with GPT-4o Vision, FDI tooth-numbering, CDT-coded procedure cataloging, and urgency triage. 5-step prompt pipeline for clinically contextualized output. Presented at ECU RCAW and CORAS 2026.',
   },
+  'TetherLog': {
+    role: 'Web development coursework · 2-person team',
+    summary:
+      'A book-tracking site where readers log progress, follow each other, and post reading updates. Authors can publish and manage their own books. React/Vite frontend; Node.js/Express + SQLite backend with JWT auth and role-based access.',
+  },
+  'QuickDigest': {
+    role: 'NLP coursework · 3-person team',
+    summary:
+      'A news-article summarizer with NLP analysis — sentiment, named entities, keywords — powered by a local Ollama LLM. Configurable short/medium/long summaries with ROUGE evaluation against a reference. Node.js/Express backend.',
+  },
 };
 
 const experienceMeta: Record<string, string> = {
@@ -132,6 +142,24 @@ const yearRange = (s: string) =>
                         ))
                       }
                     </div>
+                    {p.links && p.links.length > 0 && (
+                      <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+                        {p.links.map((l) => {
+                          const isExternal = /^https?:\/\//i.test(l.href);
+                          const href = isExternal ? l.href : asset(l.href);
+                          return (
+                            <a
+                              href={href}
+                              target={isExternal ? '_blank' : undefined}
+                              rel={isExternal ? 'noopener noreferrer' : undefined}
+                              class="arrow-link text-sm"
+                            >
+                              {l.label}
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </div>
               </li>
