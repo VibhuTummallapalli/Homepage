@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { profile } from '../data/site';
 
 interface Props {
   title?: string;
@@ -7,11 +8,56 @@ interface Props {
 }
 
 const {
-  title = 'Vibhu Tummallapalli — Software Engineer',
-  description = 'Software engineer focused on full-stack development, LLM application development, and cybersecurity. B.S. Software Engineering at ECU, M.S. Cybersecurity at UNC Charlotte.',
+  title = 'Vibhu Tummallapalli — Software Engineer in Charlotte, NC',
+  description = 'Vibhu Tummallapalli is a software engineer in Charlotte, NC, focused on full-stack development, LLM application development, and cybersecurity research. B.S. Software Engineering at East Carolina University; M.S. Cybersecurity at UNC Charlotte.',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL('/images/profile.jpg', Astro.site).toString();
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Vibhu Tummallapalli',
+  alternateName: 'Vibhu',
+  url: 'https://vibhutummallapalli.com',
+  image: ogImage,
+  jobTitle: 'Software Engineer',
+  description:
+    'Software engineer focused on full-stack development, LLM application development, and cybersecurity research.',
+  email: `mailto:${profile.email}`,
+  telephone: `+1-${profile.phone}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Charlotte',
+    addressRegion: 'NC',
+    addressCountry: 'US',
+  },
+  alumniOf: [
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'East Carolina University',
+      sameAs: 'https://www.ecu.edu/',
+    },
+  ],
+  sameAs: [
+    'https://github.com/VibhuTummallapalli',
+    'https://linkedin.com/in/vibhutummallapalli',
+  ],
+  knowsAbout: [
+    'Software Engineering',
+    'Full-Stack Development',
+    'Cybersecurity',
+    'Large Language Models',
+    'Multi-Agent Systems',
+    'AI Application Development',
+  ],
+  nationality: {
+    '@type': 'Country',
+    name: 'United States',
+  },
+};
 ---
 
 <!doctype html>
@@ -19,12 +65,34 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
 
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Vibhu Tummallapalli" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Vibhu Tummallapalli" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,10 +100,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       rel="stylesheet"
     />
 
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline />
   </head>
   <body class="bg-stone-50 min-h-screen text-stone-800 font-sans">
     <slot />
@@ -69,7 +141,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         targets.forEach((el) => {
           const rect = el.getBoundingClientRect();
           if (rect.top < window.innerHeight) {
-            // Already in view on first paint — reveal without observing.
             requestAnimationFrame(() => el.classList.add('is-revealed'));
           } else {
             observer.observe(el);
