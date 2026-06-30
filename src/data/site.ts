@@ -6,7 +6,7 @@ export const profile = {
   phone: '919-909-9573',
   github: 'https://github.com/VibhuTummallapalli',
   linkedin: 'https://linkedin.com/in/vibhutummallapalli',
-  bio: "A software engineer focused on full-stack development, LLM application development, and cybersecurity. I'm finishing my B.S. in Software Engineering (Data Science concentration) at East Carolina University and starting an M.S. in Cybersecurity at UNC Charlotte this fall.",
+  bio: "A software engineer focused on full-stack development, LLM application development, and applied AI/ML. I'm finishing my B.S. in Software Engineering (Data Science concentration) at East Carolina University and starting an M.S. in Artificial Intelligence at UNC Charlotte this fall.",
 };
 
 export type Education = {
@@ -23,12 +23,12 @@ export type Education = {
 export const education: Education[] = [
   {
     school: 'University of North Carolina at Charlotte',
-    degree: 'Master of Science in Cybersecurity',
+    degree: 'Master of Science in Artificial Intelligence',
     dates: 'Aug 2026 – May 2028 (Expected)',
     location: 'Charlotte, NC',
-    concentration: 'Network Security',
+    concentration: 'Applied AI/ML, MLOps & AI for Financial Services',
     coursework:
-      'Network Security, Wireless Network Security, Information Infrastructure Protection, Computer Communications and Networks, Competitive Cyber Defense, Malware Analysis',
+      'Applied Machine Learning, Applied Artificial Intelligence, Machine Learning Operations (MLOps), Cloud Computing for Data Analysis, AI-Driven Trustworthy Software Development, Advanced Financial Modeling with AI',
     iconClass: 'fas fa-graduation-cap',
   },
   {
