@@ -202,7 +202,6 @@ export const skillGroups: SkillGroup[] = [
       'Microsoft Agent Framework',
       'CrewAI',
       'LangChain',
-      'Retrieval-Augmented Generation (RAG)',
       'Prompt Engineering',
       'LLM Evaluation & Testing',
       'Anthropic Claude API',
