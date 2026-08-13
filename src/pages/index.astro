@@ -18,6 +18,16 @@ const projectMeta: Record<string, { summary: string; role: string }> = {
     summary:
       'A novel catalog of 9 metamorphic relations for testing multi-agent LLM systems where traditional oracles fail — interchangeability, redundancy invariance, graceful degradation. Reusable Python framework with semantic verifiers; CrewAI harnesses across OpenAI and Ollama via LangChain.',
   },
+  'MCP Tutor Agent': {
+    role: 'Agentic AI coursework',
+    summary:
+      'A local-first AI tutoring agent that calls external tools over the Model Context Protocol. Built two MCP servers in C# (stdio and streamable HTTP transports) and wired their tools into an LLM agent via the Microsoft Agent Framework, with a streaming Blazor chat UI orchestrated by .NET Aspire.',
+  },
+  'ESP32-S3 Embedded Rust Firmware': {
+    role: 'Embedded systems coursework',
+    summary:
+      'Bare-metal (no_std) firmware for the ESP32-S3, written in Rust with the esp-hal HAL and the Embassy async runtime. Reads a pull-up button input to drive an LED with debounced polling and serial logging; runs on hardware or entirely in the Wokwi simulator.',
+  },
   'Dental Charting Tool': {
     role: 'Applied research · ECU School of Dental Medicine',
     summary:
@@ -62,8 +72,7 @@ const yearRange = (s: string) =>
             Hi, I'm Vibhu.
           </h1>
           <p class="text-xl md:text-2xl text-stone-700 leading-snug font-light mb-10 max-w-xl">
-            I build agentic AI systems and LLM-powered applications that end up in
-            classrooms, clinics, and research labs.
+            I build agentic AI systems and LLM-powered applications.
           </p>
           <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <a href={`mailto:${profile.email}`} class="arrow-link">Email</a>

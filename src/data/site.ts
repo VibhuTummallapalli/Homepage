@@ -90,20 +90,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'NC Early Mathematics Placement Testing',
-    kind: 'Senior Capstone',
-    subtitle: 'Online Testing System',
-    org: 'NC Early Mathematics Placement Testing',
-    dates: 'Aug 2025 – May 2026',
-    featured: true,
-    bullets: [
-      'Built a full-stack web platform (React 19/Vite, .NET 8, EF Core, PostgreSQL) used by 60 NC high schools and 5,000+ students, with a version-controlled question bank, automated grading, and session-based access control.',
-      'Implemented role-based access (Admin/Coordinator/Proctor/Student) with JWT and 2FA, plus real-time SignalR proctor monitoring with live tracking and pause/resume controls.',
-      'Architected an asynchronous email pipeline via GCP Pub/Sub and a Python Cloud Function; deployed to GCP (App Engine, Cloud Run) through GitHub Actions CI/CD as part of a 5-member Agile team using GitLab.',
-    ],
-    tags: ['React 19', 'Vite', '.NET 8', 'EF Core', 'PostgreSQL', 'SignalR', 'JWT', 'GCP', 'GitHub Actions'],
-  },
-  {
     name: 'Metamorphic Testing of Multi-Agent AI Systems',
     kind: 'Research',
     org: 'ECU College of Engineering and Technology',
@@ -114,6 +100,20 @@ export const projects: Project[] = [
       'Implemented CrewAI test harnesses against domain tasks (financial risk, healthcare cloud security, SaaS market research), executing experiments across OpenAI and Ollama backends via LangChain.',
     ],
     tags: ['Python', 'CrewAI', 'LangChain', 'OpenAI', 'Ollama'],
+  },
+  {
+    name: 'MCP Tutor Agent',
+    kind: 'Agentic AI Coursework',
+    dates: 'Jul 2026',
+    bullets: [
+      'Built a local-first AI tutoring agent that calls external tools over the Model Context Protocol (MCP), orchestrated end to end with .NET Aspire.',
+      'Implemented two MCP servers in C# — one over stdio, one over streamable HTTP — and wired their tool catalogs into an LLM agent using the Microsoft Agent Framework.',
+      'Streamed responses token-by-token from an ASP.NET Core minimal API to a Blazor Fluent UI chat, running fully on local models via Ollama.',
+    ],
+    tags: ['C#', '.NET Aspire', 'MCP', 'Microsoft Agent Framework', 'Blazor', 'Ollama'],
+    links: [
+      { href: 'https://github.com/VibhuTummallapalli/mcp-tutor-agent', label: 'View on GitHub' },
+    ],
   },
   {
     name: 'Dental Charting Tool',
@@ -127,6 +127,33 @@ export const projects: Project[] = [
     tags: ['C#', 'WPF', '.NET', 'GPT-4o Vision', 'Ollama'],
     links: [
       { href: 'Dental_Charting_Poster_CORAS_2026.pdf', label: 'View poster (CORAS 2026)' },
+    ],
+  },
+  {
+    name: 'NC Early Mathematics Placement Testing',
+    kind: 'Senior Capstone',
+    subtitle: 'Online Testing System',
+    org: 'NC Early Mathematics Placement Testing',
+    dates: 'Aug 2025 – May 2026',
+    bullets: [
+      'Built a full-stack web platform (React 19/Vite, .NET 8, EF Core, PostgreSQL) used by 60 NC high schools and 5,000+ students, with a version-controlled question bank, automated grading, and session-based access control.',
+      'Implemented role-based access (Admin/Coordinator/Proctor/Student) with JWT and 2FA, plus real-time SignalR proctor monitoring with live tracking and pause/resume controls.',
+      'Architected an asynchronous email pipeline via GCP Pub/Sub and a Python Cloud Function; deployed to GCP (App Engine, Cloud Run) through GitHub Actions CI/CD as part of a 5-member Agile team using GitLab.',
+    ],
+    tags: ['React 19', 'Vite', '.NET 8', 'EF Core', 'PostgreSQL', 'SignalR', 'JWT', 'GCP', 'GitHub Actions'],
+  },
+  {
+    name: 'ESP32-S3 Embedded Rust Firmware',
+    kind: 'Embedded Systems Coursework',
+    dates: 'Jun 2026',
+    bullets: [
+      'Wrote bare-metal (no_std) firmware for the ESP32-S3 in Rust using the esp-hal HAL and the Embassy async runtime.',
+      'Configured GPIO to read a pull-up button input and drive an LED, with debounced polling, transition-only serial logging, and a custom panic handler.',
+      'Validated the firmware in the Wokwi simulator against a defined circuit, so it builds and runs with no physical board.',
+    ],
+    tags: ['Rust', 'no_std', 'esp-hal', 'Embassy', 'ESP32-S3', 'Wokwi'],
+    links: [
+      { href: 'https://github.com/VibhuTummallapalli/esp32-rust-button-led', label: 'View on GitHub' },
     ],
   },
   {
