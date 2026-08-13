@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'Vibhu Tummallapalli — Software Engineer in Charlotte, NC',
-  description = 'Vibhu Tummallapalli is a software engineer in Charlotte, NC, focused on full-stack development, LLM application development, and applied AI/ML. B.S. Software Engineering at East Carolina University; M.S. Artificial Intelligence at UNC Charlotte.',
+  title = 'Vibhu Tummallapalli — AI Engineer in Charlotte, NC',
+  description = 'Vibhu Tummallapalli is an AI engineer in Charlotte, NC, focused on agentic AI systems, LLM application development, and applied AI/ML. B.S. Software Engineering at East Carolina University; M.S. Artificial Intelligence at UNC Charlotte.',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -23,9 +23,9 @@ const personSchema = {
   alternateName: 'Vibhu',
   url: 'https://vibhutummallapalli.com',
   image: ogImage,
-  jobTitle: 'Software Engineer',
+  jobTitle: 'AI Engineer',
   description:
-    'Software engineer focused on full-stack development, LLM application development, and applied AI/ML.',
+    'AI engineer focused on agentic AI systems, LLM application development, and applied AI/ML.',
   email: `mailto:${profile.email}`,
   telephone: `+1-${profile.phone}`,
   address: {
@@ -46,12 +46,13 @@ const personSchema = {
     'https://linkedin.com/in/vibhutummallapalli',
   ],
   knowsAbout: [
-    'Software Engineering',
-    'Full-Stack Development',
-    'Cybersecurity',
+    'Artificial Intelligence Engineering',
+    'Agentic AI Systems',
     'Large Language Models',
     'Multi-Agent Systems',
-    'AI Application Development',
+    'LLM Application Development',
+    'Model Context Protocol',
+    'Software Engineering',
   ],
   nationality: {
     '@type': 'Country',

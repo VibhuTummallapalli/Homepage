@@ -6,7 +6,7 @@ export const profile = {
   phone: '919-909-9573',
   github: 'https://github.com/VibhuTummallapalli',
   linkedin: 'https://linkedin.com/in/vibhutummallapalli',
-  bio: "A software engineer focused on full-stack development, LLM application development, and applied AI/ML. I'm finishing my B.S. in Software Engineering (Data Science concentration) at East Carolina University and starting an M.S. in Artificial Intelligence at UNC Charlotte this fall.",
+  bio: "An AI engineer focused on agentic AI systems, LLM application development, and applied AI/ML. I'm finishing my B.S. in Software Engineering (Data Science concentration) at East Carolina University and starting an M.S. in Artificial Intelligence at UNC Charlotte this fall.",
 };
 
 export type Education = {
