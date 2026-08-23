@@ -1,0 +1,74 @@
+---
+import { profile } from '../data/site';
+
+interface Props {
+  /** The big line above the contact links. */
+  heading?: string;
+  blurb?: string;
+}
+
+const {
+  heading = 'Open to full-time roles in Charlotte.',
+  blurb = 'Based in Charlotte, NC. The best way to reach me is email — I usually reply within a day.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) =>
+  `${base.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
+---
+
+<section
+  id="contact"
+  class="bg-navy-950 text-stone-100 mt-24 md:mt-32 relative overflow-hidden"
+>
+  <!-- subtle radial highlight -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 pointer-events-none opacity-40"
+    style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(135,156,192,0.18), transparent 60%);"
+  >
+  </div>
+
+  <div class="container-prose py-24 md:py-32 relative">
+    <div data-reveal>
+      <p class="eyebrow-inverse mb-6">Get in touch</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-white leading-tight tracking-tight mb-8 max-w-2xl">
+        {heading}
+      </h2>
+      <p class="text-lg text-navy-100/80 mb-10 max-w-xl leading-relaxed">
+        {blurb}
+      </p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={`mailto:${profile.email}`} class="arrow-link-inverse">
+          {profile.email}
+        </a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
+          GitHub
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
+          LinkedIn
+        </a>
+      </div>
+
+      <a
+        href={asset('Vibhu_Tummallapalli_Resume.pdf')}
+        download
+        class="inline-flex items-center gap-2 mt-10 px-6 py-3 rounded-full bg-white text-navy-900 text-sm font-semibold hover:bg-navy-100 hover:gap-3 transition-all"
+      >
+        <i class="fas fa-arrow-down text-xs"></i>
+        Download résumé
+      </a>
+    </div>
+  </div>
+
+  <div class="border-t border-navy-800">
+    <div class="container-prose py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <p class="text-xs text-navy-300">
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+      <p class="text-xs text-navy-300">
+        Built with Astro & Tailwind. Hosted on GitHub Pages.
+      </p>
+    </div>
+  </div>
+</section>

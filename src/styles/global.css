@@ -59,6 +59,34 @@
     @apply -translate-y-px translate-x-px text-white;
   }
 
+  .back-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-navy-600 hover:text-navy-900 transition-colors;
+  }
+  .back-link::before {
+    content: '\2190';
+    @apply text-navy-300 transition-transform;
+  }
+  .back-link:hover::before {
+    @apply -translate-x-px text-navy-700;
+  }
+
+  /* Category chips on /work. `aria-pressed` is the single source of truth for
+     the selected state, so the styling can never drift from the a11y state. */
+  .filter-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-navy-200 px-4 py-2
+           text-sm font-medium text-stone-700 bg-white
+           hover:border-navy-400 hover:text-navy-900 transition-colors;
+  }
+  .filter-chip[aria-pressed='true'] {
+    @apply bg-navy-900 border-navy-900 text-white;
+  }
+  .filter-count {
+    @apply text-xs tabular-nums text-stone-400;
+  }
+  .filter-chip[aria-pressed='true'] .filter-count {
+    @apply text-navy-300;
+  }
+
   .rule {
     @apply h-px bg-navy-200 my-20 md:my-28;
   }

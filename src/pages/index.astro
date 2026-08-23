@@ -1,49 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
-import { profile, experience, projects, skillGroups } from '../data/site';
+import Footer from '../components/Footer.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import { profile, experience, skillGroups } from '../data/site';
+import { featuredProjects, allProjects } from '../lib/projects';
 
 const base = import.meta.env.BASE_URL;
 const asset = (p: string) =>
   `${base.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
-
-const projectMeta: Record<string, { summary: string; role: string }> = {
-  'NC Early Mathematics Placement Testing': {
-    role: 'Senior Capstone · 5-person Agile team',
-    summary:
-      'Full-stack web platform used by 60 NC high schools and 5,000+ students. Built role-based access with JWT + 2FA, real-time proctor monitoring via SignalR, and an async email pipeline on GCP Pub/Sub. Shipped through GitHub Actions CI/CD.',
-  },
-  'Metamorphic Testing of Multi-Agent AI Systems': {
-    role: 'Research',
-    summary:
-      'A novel catalog of 9 metamorphic relations for testing multi-agent LLM systems where traditional oracles fail — interchangeability, redundancy invariance, graceful degradation. Reusable Python framework with semantic verifiers; CrewAI harnesses across OpenAI and Ollama via LangChain.',
-  },
-  'MCP Tutor Agent': {
-    role: 'Agentic AI coursework',
-    summary:
-      'A local-first AI tutoring agent that calls external tools over the Model Context Protocol. Built two MCP servers in C# (stdio and streamable HTTP transports) and wired their tools into an LLM agent via the Microsoft Agent Framework, with a streaming Blazor chat UI orchestrated by .NET Aspire.',
-  },
-  'ESP32-S3 Embedded Rust Firmware': {
-    role: 'Embedded systems coursework',
-    summary:
-      'Bare-metal (no_std) firmware for the ESP32-S3, written in Rust with the esp-hal HAL and the Embassy async runtime. Reads a pull-up button input to drive an LED with debounced polling and serial logging; runs on hardware or entirely in the Wokwi simulator.',
-  },
-  'Dental Charting Tool': {
-    role: 'Applied research · ECU School of Dental Medicine',
-    summary:
-      'WPF/.NET desktop app for radiograph analysis with GPT-4o Vision, FDI tooth-numbering, CDT-coded procedure cataloging, and urgency triage. 5-step prompt pipeline for clinically contextualized output. Presented at ECU RCAW and CORAS 2026.',
-  },
-  'TetherLog': {
-    role: 'Web development coursework · 2-person team',
-    summary:
-      'A book-tracking site where readers log progress, follow each other, and post reading updates. Authors can publish and manage their own books. React/Vite frontend; Node.js/Express + SQLite backend with JWT auth and role-based access.',
-  },
-  'QuickDigest': {
-    role: 'NLP coursework · 3-person team',
-    summary:
-      'A news-article summarizer with NLP analysis — sentiment, named entities, keywords — powered by a local Ollama LLM. Configurable short/medium/long summaries with ROUGE evaluation against a reference. Node.js/Express backend.',
-  },
-};
 
 const experienceMeta: Record<string, string> = {
   'Undergraduate Research Assistant':
@@ -54,6 +19,8 @@ const experienceMeta: Record<string, string> = {
 
 const yearRange = (s: string) =>
   s.replace(/\s*\(Expected\)/, '').replace(/–/g, '—');
+
+const restCount = allProjects.length - featuredProjects.length;
 ---
 
 <Layout>
@@ -98,7 +65,7 @@ const yearRange = (s: string) =>
         <p class="eyebrow md:pt-1">Currently</p>
         <p class="text-lg text-stone-700 leading-relaxed">
           Finished my B.S. in <span class="text-navy-800 font-medium">Software Engineering</span> at
-          East Carolina University. Starting an M.S. in <span class="text-navy-800 font-medium">Artificial Intelligence</span>
+          East Carolina University. Started an M.S. in <span class="text-navy-800 font-medium">Artificial Intelligence</span>
           at UNC Charlotte this fall. Open to
           <span class="text-navy-800 font-medium">full-time</span> roles
           in Charlotte.
@@ -108,74 +75,46 @@ const yearRange = (s: string) =>
 
     <div class="rule"></div>
 
-    <!-- Selected work -->
+    <!-- Selected work — the featured cut. Everything else lives on /work. -->
     <section id="work">
-      <h2 class="eyebrow mb-12" data-reveal>Selected work</h2>
+      <div class="flex items-baseline justify-between gap-4 mb-12" data-reveal>
+        <h2 class="eyebrow">Selected work</h2>
+        <a href={asset('work')} class="arrow-link text-sm">All work</a>
+      </div>
 
       <ol class="space-y-8 md:space-y-10">
         {
-          projects.map((p, i) => {
-            const meta = projectMeta[p.name];
-            const hoverBg = i % 2 === 0 ? 'hover:bg-navy-50' : 'hover:bg-stone-100';
-            return (
-              <li
-                class={`transition-colors duration-300 rounded-xl px-4 md:px-6 py-5 md:py-6 -mx-4 md:-mx-6 ${hoverBg}`}
-                data-reveal
-              >
-                <div class="flex items-start gap-5 md:gap-8">
-                  <span class="font-serif text-3xl md:text-4xl text-navy-400 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div class="flex-1 min-w-0">
-                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
-                      <h3 class="text-xl md:text-2xl font-semibold text-navy-900 tracking-tight">
-                        {p.name}
-                      </h3>
-                      <span class="text-xs text-stone-400 whitespace-nowrap tabular-nums">
-                        {yearRange(p.dates)}
-                      </span>
-                    </div>
-                    {meta && (
-                      <p class="text-sm text-navy-600 mb-4">{meta.role}</p>
-                    )}
-                    <p class="text-base text-stone-700 leading-relaxed mb-5 max-w-2xl">
-                      {meta?.summary ?? p.bullets[0]}
-                    </p>
-                    <div class="flex flex-wrap gap-x-3 gap-y-1">
-                      {
-                        p.tags.map((t, idx) => (
-                          <>
-                            {idx > 0 && <span class="text-navy-200">·</span>}
-                            <span class="tag">{t}</span>
-                          </>
-                        ))
-                      }
-                    </div>
-                    {p.links && p.links.length > 0 && (
-                      <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4">
-                        {p.links.map((l) => {
-                          const isExternal = /^https?:\/\//i.test(l.href);
-                          const href = isExternal ? l.href : asset(l.href);
-                          return (
-                            <a
-                              href={href}
-                              target={isExternal ? '_blank' : undefined}
-                              rel={isExternal ? 'noopener noreferrer' : undefined}
-                              class="arrow-link text-sm"
-                            >
-                              {l.label}
-                            </a>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </li>
-            );
-          })
+          featuredProjects.map((p, i) => (
+            <ProjectEntry project={p} index={i} striped={i % 2 === 1} />
+          ))
         }
       </ol>
+
+      {
+        restCount > 0 && (
+          <a
+            href={asset('work')}
+            class="group mt-10 md:mt-12 flex items-center justify-between gap-6 rounded-xl border border-navy-200 px-5 md:px-7 py-5 md:py-6 hover:border-navy-400 hover:bg-navy-50 transition-colors"
+            data-reveal
+          >
+            <span>
+              <span class="block text-lg font-semibold text-navy-900 tracking-tight">
+                See everything I've built
+              </span>
+              <span class="block text-sm text-stone-600 mt-1">
+                {restCount} more {restCount === 1 ? 'project' : 'projects'} — research,
+                agents, full-stack, and embedded work.
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              class="text-navy-400 text-xl group-hover:text-navy-700 group-hover:translate-x-1 transition-all flex-shrink-0"
+            >
+              →
+            </span>
+          </a>
+        )
+      }
     </section>
 
     <div class="rule"></div>
@@ -245,60 +184,5 @@ const yearRange = (s: string) =>
 
   </main>
 
-  <!-- Contact — full-bleed navy section -->
-  <section
-    id="contact"
-    class="bg-navy-950 text-stone-100 mt-24 md:mt-32 relative overflow-hidden"
-  >
-    <!-- subtle radial highlight -->
-    <div
-      aria-hidden="true"
-      class="absolute inset-0 pointer-events-none opacity-40"
-      style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(135,156,192,0.18), transparent 60%);"
-    ></div>
-
-    <div class="container-prose py-24 md:py-32 relative">
-      <div data-reveal>
-        <p class="eyebrow-inverse mb-6">Get in touch</p>
-        <h2 class="font-serif text-4xl md:text-6xl text-white leading-tight tracking-tight mb-8 max-w-2xl">
-          Open to full-time roles in Charlotte.
-        </h2>
-        <p class="text-lg text-navy-100/80 mb-10 max-w-xl leading-relaxed">
-          Based in Charlotte, NC. The best way to reach me is email — I usually
-          reply within a day.
-        </p>
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a href={`mailto:${profile.email}`} class="arrow-link-inverse">
-            {profile.email}
-          </a>
-          <a href={profile.github} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
-            GitHub
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="arrow-link-inverse">
-            LinkedIn
-          </a>
-        </div>
-
-        <a
-          href={asset('Vibhu_Tummallapalli_Resume.pdf')}
-          download
-          class="inline-flex items-center gap-2 mt-10 px-6 py-3 rounded-full bg-white text-navy-900 text-sm font-semibold hover:bg-navy-100 hover:gap-3 transition-all"
-        >
-          <i class="fas fa-arrow-down text-xs"></i>
-          Download résumé
-        </a>
-      </div>
-    </div>
-
-    <div class="border-t border-navy-800">
-      <div class="container-prose py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p class="text-xs text-navy-300">
-          © {new Date().getFullYear()} {profile.name}
-        </p>
-        <p class="text-xs text-navy-300">
-          Built with Astro & Tailwind. Hosted on GitHub Pages.
-        </p>
-      </div>
-    </div>
-  </section>
+  <Footer />
 </Layout>

@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import {
+  allProjects,
+  activeCategories,
+  groupByYear,
+  categorySlug,
+} from '../lib/projects';
+
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) =>
+  `${base.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
+
+const groups = groupByYear(allProjects);
+
+const filters = [
+  { value: 'all', label: 'All', count: allProjects.length },
+  ...activeCategories.map((c) => ({
+    value: c,
+    label: c,
+    count: allProjects.filter((p) => p.category === c).length,
+  })),
+];
+
+// A running index across year groups, so the gutter numbers stay continuous.
+let ordinal = -1;
+
+const title = 'All work — Vibhu Tummallapalli';
+const description = `Every public project by Vibhu Tummallapalli — ${allProjects.length} builds across agentic AI, research, full-stack web, and embedded systems.`;
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+
+  <span id="top"></span>
+
+  <main class="container-prose">
+
+    <!-- Header -->
+    <section class="pt-16 md:pt-24 pb-10 md:pb-14" data-reveal>
+      <a href={asset('') || '/'} class="back-link mb-8">Home</a>
+      <p class="eyebrow mb-6">Archive</p>
+      <h1 class="font-serif text-navy-900 text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+        All work
+      </h1>
+      <p class="text-lg md:text-xl text-stone-700 leading-relaxed max-w-xl font-light">
+        Everything I've built in public — {allProjects.length} projects spanning
+        agentic AI, applied research, full-stack web, and embedded systems.
+        Newest first.
+      </p>
+    </section>
+
+    <!-- Filters -->
+    <section class="pb-10 md:pb-14" data-reveal>
+      <h2 class="sr-only">Filter projects by category</h2>
+      <div
+        id="filters"
+        class="flex flex-wrap gap-2"
+        role="group"
+        aria-label="Filter projects by category"
+      >
+        {
+          filters.map((f) => (
+            <button
+              type="button"
+              class="filter-chip"
+              data-filter={f.value}
+              data-slug={categorySlug(f.value)}
+              aria-pressed={f.value === 'all' ? 'true' : 'false'}
+            >
+              {f.label}
+              <span class="filter-count">{f.count}</span>
+            </button>
+          ))
+        }
+      </div>
+      <p
+        id="filter-status"
+        class="sr-only"
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+    </section>
+
+    <!-- The list, grouped by year -->
+    <section id="all-work">
+      {
+        groups.map((group) => (
+          <div class="year-group" data-year={group.year}>
+            <div
+              class="flex items-baseline gap-4 pt-6 pb-6 md:pt-8 md:pb-8"
+              data-reveal
+            >
+              <h2 class="font-serif text-2xl md:text-3xl text-navy-800 tabular-nums">
+                {group.year}
+              </h2>
+              <span class="h-px flex-1 bg-navy-200"></span>
+            </div>
+            <ol class="space-y-8 md:space-y-10">
+              {group.items.map((p) => {
+                ordinal += 1;
+                return (
+                  <ProjectEntry
+                    project={p}
+                    index={ordinal}
+                    striped={ordinal % 2 === 1}
+                    showKind
+                  />
+                );
+              })}
+            </ol>
+          </div>
+        ))
+      }
+
+      <p
+        id="empty-state"
+        class="hidden py-16 text-center text-stone-500"
+      >
+        Nothing in that category yet.
+      </p>
+    </section>
+
+  </main>
+
+  <Footer
+    heading="Want to talk through any of these?"
+    blurb="Based in Charlotte, NC, and open to full-time roles. Email is the fastest way to reach me — I usually reply within a day."
+  />
+
+  <script is:inline>
+    // Category filtering. Progressive enhancement: with JS off every project
+    // is already rendered and visible, and the chips simply do nothing.
+    (() => {
+      const bar = document.getElementById('filters');
+      if (!bar) return;
+
+      const chips = Array.from(bar.querySelectorAll('[data-filter]'));
+      const entries = Array.from(document.querySelectorAll('.project-entry'));
+      const groups = Array.from(document.querySelectorAll('.year-group'));
+      const empty = document.getElementById('empty-state');
+      const status = document.getElementById('filter-status');
+
+      function apply(value) {
+        let shown = 0;
+
+        entries.forEach((el) => {
+          const match = value === 'all' || el.dataset.category === value;
+          el.classList.toggle('hidden', !match);
+          if (match) shown += 1;
+        });
+
+        // Hide a year heading once nothing under it survives the filter.
+        groups.forEach((g) => {
+          const anyVisible = g.querySelector('.project-entry:not(.hidden)');
+          g.classList.toggle('hidden', !anyVisible);
+        });
+
+        chips.forEach((c) => {
+          c.setAttribute(
+            'aria-pressed',
+            c.dataset.filter === value ? 'true' : 'false'
+          );
+        });
+
+        if (empty) empty.classList.toggle('hidden', shown > 0);
+        if (status) {
+          status.textContent =
+            shown === 0
+              ? 'No projects match that category.'
+              : `Showing ${shown} project${shown === 1 ? '' : 's'}` +
+                (value === 'all' ? '.' : ` in ${value}.`);
+        }
+
+        const url = new URL(window.location.href);
+        if (value === 'all') url.searchParams.delete('category');
+        else url.searchParams.set('category', value);
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => apply(chip.dataset.filter));
+      });
+
+      // Honour ?category= on load, matching on the slug so the URL stays tidy.
+      const requested = new URL(window.location.href).searchParams.get('category');
+      if (requested) {
+        const slug = requested.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const chip = chips.find((c) => c.dataset.slug === slug);
+        if (chip) apply(chip.dataset.filter);
+      }
+    })();
+  </script>
+</Layout>

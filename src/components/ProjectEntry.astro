@@ -1,0 +1,95 @@
+---
+import type { Project } from '../data/site';
+
+interface Props {
+  project: Project;
+  /** Ordinal shown in the left gutter. Omit to hide the number column. */
+  index?: number;
+  /** Alternates the hover tint so consecutive rows stay distinguishable. */
+  striped?: boolean;
+  /** /work shows the project kind; the home page keeps the leaner `role`. */
+  showKind?: boolean;
+}
+
+const { project: p, index, striped = false, showKind = false } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const asset = (path: string) =>
+  `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+
+const yearRange = (s: string) =>
+  s.replace(/\s*\(Expected\)/, '').replace(/–/g, '—');
+
+const hoverBg = striped ? 'hover:bg-stone-100' : 'hover:bg-navy-50';
+const meta = [showKind ? p.kind : null, p.org].filter(Boolean).join(' · ');
+---
+
+<li
+  id={p.slug}
+  data-category={p.category}
+  class={`project-entry scroll-mt-24 transition-colors duration-300 rounded-xl px-4 md:px-6 py-5 md:py-6 -mx-4 md:-mx-6 ${hoverBg}`}
+  data-reveal
+>
+  <div class="flex items-start gap-5 md:gap-8">
+    {
+      index !== undefined && (
+        <span class="font-serif text-3xl md:text-4xl text-navy-400 leading-none pt-1 w-12 md:w-14 flex-shrink-0 tabular-nums">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+      )
+    }
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+        <h3 class="text-xl md:text-2xl font-semibold text-navy-900 tracking-tight">
+          {p.name}
+          {p.subtitle && (
+            <span class="block text-base font-normal text-stone-500 mt-0.5">
+              {p.subtitle}
+            </span>
+          )}
+        </h3>
+        <span class="text-xs text-stone-400 whitespace-nowrap tabular-nums">
+          {yearRange(p.dates)}
+        </span>
+      </div>
+
+      <p class="text-sm text-navy-600 mb-4">{showKind ? meta || p.role : p.role}</p>
+
+      <p class="text-base text-stone-700 leading-relaxed mb-5 max-w-2xl">
+        {p.summary}
+      </p>
+
+      <div class="flex flex-wrap gap-x-3 gap-y-1">
+        {
+          p.tags.map((t, idx) => (
+            <>
+              {idx > 0 && <span class="text-navy-200">·</span>}
+              <span class="tag">{t}</span>
+            </>
+          ))
+        }
+      </div>
+
+      {
+        p.links && p.links.length > 0 && (
+          <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+            {p.links.map((l) => {
+              const isExternal = /^https?:\/\//i.test(l.href);
+              const to = isExternal ? l.href : asset(l.href);
+              return (
+                <a
+                  href={to}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                  class="arrow-link text-sm"
+                >
+                  {l.label}
+                </a>
+              );
+            })}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</li>

@@ -1,33 +1,50 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = (p: string) => `${base}/${p.replace(/^\//, '')}`;
+
+/**
+ * `match` decides the active state. Section links point at the home page's
+ * anchors, so they resolve from any page rather than dangling on /work.
+ */
 const links = [
-  { href: '#work', label: 'Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#contact', label: 'Contact' },
+  { href: href('work'), label: 'Work', match: /^\/work\/?$/ },
+  { href: `${href('')}/#experience`.replace(/\/+#/, '/#'), label: 'Experience' },
+  { href: `${href('')}/#stack`.replace(/\/+#/, '/#'), label: 'Stack' },
+  { href: `${href('')}/#contact`.replace(/\/+#/, '/#'), label: 'Contact' },
 ];
+
+const path = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-navy-800">
   <div class="container-prose">
-    <nav class="flex items-center justify-between py-4">
+    <nav class="flex items-center justify-between py-4" aria-label="Primary">
       <a
-        href="#top"
+        href={href('') || '/'}
         class="text-sm font-semibold text-white tracking-tight hover:text-navy-200 transition-colors"
       >
         Vibhu Tummallapalli
       </a>
       <ul class="flex items-center gap-5 md:gap-7">
         {
-          links.map(({ href, label }) => (
-            <li>
-              <a
-                href={href}
-                class="text-sm text-navy-200 hover:text-white transition-colors"
-              >
-                {label}
-              </a>
-            </li>
-          ))
+          links.map(({ href: to, label, match }) => {
+            const isActive = match ? match.test(path) : false;
+            return (
+              <li>
+                <a
+                  href={to}
+                  aria-current={isActive ? 'page' : undefined}
+                  class={`text-sm transition-colors ${
+                    isActive
+                      ? 'text-white font-medium'
+                      : 'text-navy-200 hover:text-white'
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </nav>
